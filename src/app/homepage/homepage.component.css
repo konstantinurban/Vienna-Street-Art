@@ -1,0 +1,33 @@
+h1 {
+  margin: 0;
+}
+
+.backgroundImage {
+    background-image: url("/assets/main_background.jpg");
+    height: 100vh;
+    width: 100vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.text{
+  height: 100vh;
+}
+
+
+/* proper highlight not working because row had display: flex */
+.homepageText {
+  width: 70%;
+  color: #912b2b;
+  font-family: Courier;
+  font-size: .9rem;
+  font-weight: bold;
+  background-color: #fff2ac;
+  margin-top: -8rem;
+}
+
+#startButton {
+  position: absolute;
+  margin: -24rem;
+}
