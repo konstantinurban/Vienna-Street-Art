@@ -16,7 +16,7 @@ h1 {
 }
 
 
-/* proper highlight not working because row had display: flex */
+/* proper highlight not working because row has display: flex */
 .homepageText {
   width: 70%;
   color: #912b2b;
@@ -29,5 +29,14 @@ h1 {
 
 #startButton {
   position: absolute;
-  margin: -24rem;
+  margin: -29rem;
+  color: #912b2b;
+  font-family: Courier;
+  font-size: 1.1rem;
+  font-weight:  1000;
+  border-color: #fff2ac;;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #fff2ac;
 }

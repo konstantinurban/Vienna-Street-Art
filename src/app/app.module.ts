@@ -5,11 +5,13 @@ import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OpenStreetMapComponent } from './open-street-map/open-street-map.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
+    OpenStreetMapComponent,
   ],
   imports: [
     BrowserModule,
