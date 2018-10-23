@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OpenStreetMapComponent } from './open-street-map/open-street-map.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { OpenStreetMapComponent } from './open-street-map/open-street-map.compon
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
