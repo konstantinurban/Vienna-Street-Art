@@ -1,17 +1,19 @@
-<!-- <div id="map">
-  <div class="leaflet-bottom leaflet-left">
-    <button type="submit" class="add-new-button leaflet-control" (click)="addNew()"><i class="fa fa-plus fa-7x"></i></button>
+<div class="demo-container">
+  <div class="h-block">
+    <h1 class="display-1">Boostrap Modal</h1>
+
+    <p>This example shows that <code>NgxSmartModal</code> works perfectly and is entirely working with any CSS
+      framework.</p>
   </div>
-</div> -->
 
+  <div>
+    <button class="btn btn-default" (click)="myBootstrapModal.open()">Open me!</button>
+  </div>
 
-<div id="map">
-  <div class="leaflet-bottom leaflet-left">
-    <button type="submit" class="add-new-button leaflet-control" (click)="myBootstrapModal.open()"><i class="fa fa-plus fa-7x"></i></button>
+  <div class="go-back mt-3">
+    <a routerLink="..">← Go back</a>
   </div>
 </div>
-
-<!-- Modal -->
 
 <ngx-smart-modal #myBootstrapModal identifier="myBootstrapModal" [closable]="false">
   <div class="modal-header">

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSmartModalService } from 'ngx-smart-modal';
+
 /*When you include the leaflet script inside the Angular project, it gets
 loaded and exported into a L variable.*/
 declare let L; //this is the leaflet variable!
@@ -10,7 +12,9 @@ declare let L; //this is the leaflet variable!
 })
 export class OpenStreetMapComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public ngxSmartModalService: NgxSmartModalService,
+  ) { }
 
   ngOnInit() {
 
@@ -22,7 +26,7 @@ export class OpenStreetMapComponent implements OnInit {
 
     // positioning the zoom button
     L.control.zoom({
-      position: 'topright'
+      position: 'topright',
     }).addTo(map);
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -33,7 +37,7 @@ export class OpenStreetMapComponent implements OnInit {
     }).addTo(map);
 
     // map to center
-    L.easyButton('<span><i class="fa fa-compass fa-2x"></i></i></span>', function(btn, map) {
+    L.easyButton('<span><i class="fa fa-compass fa-2x"></i></span>', function(btn, map) {
       map.setView([48.208, 16.373], 13);
     },
       {
@@ -41,7 +45,7 @@ export class OpenStreetMapComponent implements OnInit {
       }).addTo(map);
 
 
-  //waldo icon
+    //person icon
     var personIcon = L.icon({
       iconUrl: 'src/assets/personIcon.png',
       iconAnchor: [13, 16], // point of the icon which will correspond to marker's location
@@ -51,7 +55,7 @@ export class OpenStreetMapComponent implements OnInit {
     L.easyButton('<span class="myLocationIcon"><i class="myLocationIcon fa fa-map-marker fa-2x"></i></i></span>', function(btn, map) {
       map.locate({ setView: true, watch: false, enableHighAccuracy: true }) // set watch "true", to get realtime location, if im not mistaken
         .on('locationfound', function(e) {
-          L.marker([e.latitude, e.longitude], {icon : personIcon}).addTo(map);
+          L.marker([e.latitude, e.longitude], { icon: personIcon }).addTo(map);
           L.circle([e.latitude, e.longitude], {
             weight: 1,
             color: 'blue',
@@ -67,10 +71,24 @@ export class OpenStreetMapComponent implements OnInit {
         position: 'topright'
       }).addTo(map);
 
+    //add new button
+    // L.easyButton('<i class="fa fa-plus-square fa-2x"></i>', function(btn, map) {
+    //   alert("add new entry");
+    // },
+    //   {
+    //     position: 'bottomleft'
+    //   }).addTo(map);
+
+
 
     // add marker
     L.marker([48.208, 16.373]).addTo(map);
 
   }
+
+
+  // addNew() {
+  //   // alert("Modal to add a new entry comes here!");
+  // }
 
 }

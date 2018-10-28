@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-@@import url(~node_modules/fontawesome/css/fontawesome.css);
-@@import url(~node_modules/bootstrap/dist/css/bootstrap.css);
+@import url(~ngx-smart-modal/ngx-smart-modal.css);
+
+/* @import url(~node_modules/fontawesome/css/fontawesome.css);
+@import url(~node_modules/bootstrap/dist/css/bootstrap.css); */
 
 
 
