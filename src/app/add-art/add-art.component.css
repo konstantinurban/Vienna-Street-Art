@@ -1,43 +1,19 @@
-/* @import "~bootstrap/scss/bootstrap"; */
-
-.demo-container {
-  position: relative;
-  width: 100%;
-  max-width: 960px;
-  height: 100vh;
-  margin: 0 auto;
-  padding: 20px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-
-  .title {
-    color: #fff;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, .5);
-  }
+.modal-content,
+.modalButtons {
+  background-color: #fff;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background-clip: padding-box;
+  cursor: pointer;
+}
+.modalButtons:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  text-decoration: none;
 }
 
-.h-block {
-  color: white;
-
-  h1 {
-    color: white;
-  }
+.modal-content {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.no-padding {
-  .nsm-content {
-    padding: 0 !important;
-  }
-}
-
-.go-back {
-  margin-top: 10px;
-
-  a {
-    color: white;
-  }
+.form-control {
+  border-radius: 0px;
 }

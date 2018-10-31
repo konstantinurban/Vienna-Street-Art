@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NgxSmartModalService } from 'ngx-smart-modal';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
+import { AddArtComponent } from '../add-art/add-art.component';
+
 
 /*When you include the leaflet script inside the Angular project, it gets
 loaded and exported into a L variable.*/
@@ -13,7 +16,7 @@ declare let L; //this is the leaflet variable!
 export class OpenStreetMapComponent implements OnInit {
 
   constructor(
-    public ngxSmartModalService: NgxSmartModalService,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit() {
@@ -71,24 +74,15 @@ export class OpenStreetMapComponent implements OnInit {
         position: 'topright'
       }).addTo(map);
 
-    //add new button
-    // L.easyButton('<i class="fa fa-plus-square fa-2x"></i>', function(btn, map) {
-    //   alert("add new entry");
-    // },
-    //   {
-    //     position: 'bottomleft'
-    //   }).addTo(map);
-
-
 
     // add marker
     L.marker([48.208, 16.373]).addTo(map);
 
   }
 
-
-  // addNew() {
-  //   // alert("Modal to add a new entry comes here!");
-  // }
+  addNew() {
+    const modalRef = this.modalService.open(AddArtComponent, { size: 'lg'});
+    modalRef.componentInstance.title = 'About';
+  }
 
 }

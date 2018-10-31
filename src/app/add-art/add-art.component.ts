@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
+
 
 @Component({
   selector: 'app-add-art',
@@ -7,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddArtComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public activeModal: NgbActiveModal
+  ) { }
 
   ngOnInit() {
   }

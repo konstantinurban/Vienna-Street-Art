@@ -2,9 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { NgxSmartModalModule } from 'ngx-smart-modal';
+
 
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -27,9 +27,15 @@ import { AddArtComponent } from './add-art/add-art.component';
     MatCheckboxModule,
     AngularFontAwesomeModule,
     AppRoutingModule,
-    NgxSmartModalModule.forRoot()
+    NgbModule.forRoot()
+
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    NgbActiveModal
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [
+    AddArtComponent
+  ]
 })
 export class AppModule { }
