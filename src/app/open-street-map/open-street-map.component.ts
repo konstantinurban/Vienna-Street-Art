@@ -35,6 +35,7 @@ export class OpenStreetMapComponent implements OnInit {
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
       maxZoom: 18,
+      minZoom: 13,
       id: 'mapbox.streets',
       accessToken: 'pk.eyJ1IjoicHcxN2wwMDgiLCJhIjoiY2pua2c2OWxuMGVkOTNxbWh5MWNqajEwdyJ9.X_SuGwNGs12TwCsrsUvBxw'
     }).addTo(map);
@@ -50,7 +51,7 @@ export class OpenStreetMapComponent implements OnInit {
 
     //person icon
     var personIcon = L.icon({
-      iconUrl: 'src/assets/personIcon.png',
+      iconUrl: 'src/assets/icons/person_icon.png',
       iconAnchor: [13, 16], // point of the icon which will correspond to marker's location
     });
 
@@ -67,22 +68,35 @@ export class OpenStreetMapComponent implements OnInit {
           }).addTo(map);
         })
         .on('locationerror', function(e) {
-          alert("Cannot access your location");
+          alert("Cannot access your location!");
         })
     },
       {
         position: 'topright'
       }).addTo(map);
 
-
     // add marker
     L.marker([48.208, 16.373]).addTo(map);
 
+    //search
+    var markersLayer = new L.LayerGroup();
+    map.addLayer(markersLayer);
+
+    var controlSearch = new L.Control.Search({
+      position: 'topleft',
+      layer: markersLayer,
+      initial: false,
+      zoom: 12,
+      marker: false
+    });
+
+    map.addControl(controlSearch);
+
   }
 
+  // opens the modal to add a new art work
   addNew() {
-    const modalRef = this.modalService.open(AddArtComponent, { size: 'lg'});
-    modalRef.componentInstance.title = 'About';
+    const modalRef = this.modalService.open(AddArtComponent, { size: 'lg' });
   }
 
 }
