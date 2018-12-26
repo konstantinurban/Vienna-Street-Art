@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-
-import { AddArtComponent } from '../add-art/add-art.component';
-
 
 /*When you include the leaflet script inside the Angular project, it gets
 loaded and exported into a L variable.*/
 declare let L; //this is the leaflet variable!
+
 
 @Component({
   selector: 'app-open-street-map',
@@ -15,32 +12,30 @@ declare let L; //this is the leaflet variable!
 })
 export class OpenStreetMapComponent implements OnInit {
 
-  constructor(
-    private modalService: NgbModal
-  ) { }
+  constructor( ) { }
 
   ngOnInit() {
-
     const map = L.map('map', {
       center: [48.208, 16.373],
       zoom: 13,
       zoomControl: false,
     });
 
-    // positioning the zoom button
-    L.control.zoom({
-      position: 'topright',
-    }).addTo(map);
-
+    //base layer
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
       maxZoom: 18,
-      minZoom: 13,
+      // minZoom: 13,
       id: 'mapbox.streets',
       accessToken: 'pk.eyJ1IjoicHcxN2wwMDgiLCJhIjoiY2pua2c2OWxuMGVkOTNxbWh5MWNqajEwdyJ9.X_SuGwNGs12TwCsrsUvBxw'
     }).addTo(map);
 
-    // map to center
+    // zoom button
+    L.control.zoom({
+      position: 'topright',
+    }).addTo(map);
+
+    // button to center map
     L.easyButton('<span><i class="fa fa-compass fa-2x"></i></span>', function(btn, map) {
       map.setView([48.208, 16.373], 13);
     },
@@ -48,9 +43,8 @@ export class OpenStreetMapComponent implements OnInit {
         position: 'topright'
       }).addTo(map);
 
-
     //person icon
-    var personIcon = L.icon({
+    let personIcon = L.icon({
       iconUrl: 'src/assets/icons/person_icon.png',
       iconAnchor: [13, 16], // point of the icon which will correspond to marker's location
     });
@@ -76,15 +70,19 @@ export class OpenStreetMapComponent implements OnInit {
       }).addTo(map);
 
     // add marker
-    L.marker([48.208, 16.373]).addTo(map);
+    let markerIcon = L.icon({ iconUrl: 'src/assests/icons/marker.svg'});
+    L.marker([48.208, 16.373], {
+                icon: markerIcon, //can read the png for some reason...
+                riseOnHover: true
+              }).addTo(map);
 
     //search
-    var markersLayer = new L.LayerGroup();
-    map.addLayer(markersLayer);
+    var searchLayer = new L.LayerGroup();
+    map.addLayer(searchLayer);
 
     var controlSearch = new L.Control.Search({
       position: 'topleft',
-      layer: markersLayer,
+      layer: searchLayer,
       initial: false,
       zoom: 12,
       marker: false
@@ -93,10 +91,4 @@ export class OpenStreetMapComponent implements OnInit {
     map.addControl(controlSearch);
 
   }
-
-  // opens the modal to add a new art work
-  addNew() {
-    const modalRef = this.modalService.open(AddArtComponent, { size: 'lg' });
-  }
-
 }

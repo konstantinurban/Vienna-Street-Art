@@ -3,7 +3,7 @@ h1 {
 }
 
 .backgroundImage {
-    background-image: url("/assets/main_background.jpg");
+    background-image: url("/assets/images/main_background.jpg");
     height: 100vh;
     width: 100vw;
     background-position: center;
@@ -11,7 +11,9 @@ h1 {
     background-size: cover;
 }
 
-.text{
+
+/* so that bootstrap's align-items-center works */
+.mainRow{
   height: 100vh;
 }
 
@@ -25,18 +27,35 @@ h1 {
   font-weight: bold;
   background-color: #fff2ac;
   margin-top: -8rem;
+  text-align: center;
 }
 
-#startButton {
+#startButton, .loginButton {
   position: absolute;
   margin: -29rem;
   color: #912b2b;
   font-family: Courier;
   font-size: 1.1rem;
   font-weight:  1000;
-  border-color: #fff2ac;;
+  border-color: #fff2ac;
+  border-radius: 0em;
 }
 
 .btn-outline-secondary:hover {
     background-color: #fff2ac;
+}
+
+.logo {
+  color: #fff2ac;
+  font-size: 2em;
+}
+
+.loginButton {
+  margin-right: 23px;
+  margin-top: 23px;
+}
+
+
+.log {
+  display: none;
 }

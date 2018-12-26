@@ -1,4 +1,4 @@
-<div class="modal-content" role="document" tabindex="-1" role="dialog" aria-labelledby="Add New Art" aria-hidden="true">
+<div class="modal-content" tabindex="-1" role="dialog" aria-labelledby="Add New Art" aria-hidden="true">
   <!-- Modal Header -->
 
   <div class="modal-header">
@@ -13,13 +13,13 @@
   <div class="modal-body">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-4">
+        <div class="col-sm-4">
           <div class="uploadImage">
-            <img src="assets/modalPic.jpg" alt="Uploaded Image" class="img-fluid">
+            <img src="assets/images/modalPic.jpg" alt="Uploaded Image" class="img-fluid samplePic">
             <button type="submit" class="imgUploadButton mt-2 ml-5 modalButtons">Upload Image</button>
           </div>
         </div>
-        <div class="col-8">
+        <div class="col-sm-8">
           <div class="artInfo">
             <form>
               <div class="form-group">
@@ -39,16 +39,16 @@
                 </div>
                 <div class="form-row">
                   <div class="col">
-                    <input type="text" class="form-control mt-1" id="formGroupExampleInput2" placeholder="Latitude">
+                    <input type="text" class="form-control mt-1" id="inputLong" placeholder="Latitude">
                   </div>
                   <div class="col">
-                    <input type="text" class="form-control mt-1" id="formGroupExampleInput2" placeholder="Longitude">
+                    <input type="text" class="form-control mt-1" id="inputLat" placeholder="Longitude">
                   </div>
                 </div>
               </div>
               <div class="form-group mt-2">
-                <label for="Artist Name">Addtional Information</label>
-                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Add...">
+                <label for="Artist Name">Addtional Information</label> <br>
+                <textarea name="name" rows="2" cols="49" class="additionalInfoText"></textarea>
               </div>
             </form>
           </div>

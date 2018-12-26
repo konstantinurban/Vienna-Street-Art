@@ -4,6 +4,8 @@
   border: 2px solid rgba(0, 0, 0, 0.2);
   background-clip: padding-box;
   cursor: pointer;
+  border-radius: 0px;
+
 }
 .modalButtons:hover {
   background-color: rgba(0, 0, 0, 0.2);
@@ -11,9 +13,23 @@
 }
 
 .modal-content {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Courier;
 }
 
-.form-control {
-  border-radius: 0px;
+
+@media screen and (max-width: 600px) {
+
+  .additionalInfoText {
+    width: 18em;
+  }
+
+}
+
+
+@media screen and (max-width: 800px) {
+
+  .additionalInfoText {
+    width: 18em;
+  }
+
 }

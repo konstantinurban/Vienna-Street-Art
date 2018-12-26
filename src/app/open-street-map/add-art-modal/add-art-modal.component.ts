@@ -4,11 +4,11 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
-  selector: 'app-add-art',
-  templateUrl: './add-art.component.html',
-  styleUrls: ['./add-art.component.css']
+  selector: 'app-add-art-modal',
+  templateUrl: './add-art-modal.component.html',
+  styleUrls: ['./add-art-modal.component.css']
 })
-export class AddArtComponent implements OnInit {
+export class AddArtModalComponent implements OnInit {
 
   constructor(
     public activeModal: NgbActiveModal

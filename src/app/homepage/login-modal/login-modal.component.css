@@ -1,0 +1,21 @@
+.modal-content,
+.modalButtons {
+  background-color: #fff;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background-clip: padding-box;
+  cursor: pointer;
+  border-radius: 0px;
+}
+
+.modal-content {
+  font-family: Courier;
+}
+
+.modalButtons {
+  margin-left: 4em;
+  color: black;
+}
+
+.signInButton:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
