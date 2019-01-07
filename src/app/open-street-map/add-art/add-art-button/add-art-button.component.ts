@@ -12,7 +12,7 @@ import { AddArtModalComponent } from '../add-art-modal/add-art-modal.component';
 export class AddArtButtonComponent implements OnInit {
 
   constructor(
-    private modalService: NgbModal
+    private addModalService: NgbModal
 
   ) { }
 
@@ -21,7 +21,7 @@ export class AddArtButtonComponent implements OnInit {
 
   // opens the modal to add a new art work
   addNew() {
-    const modalRef = this.modalService.open(AddArtModalComponent, { size: 'lg' });
+    const modalRef = this.addModalService.open(AddArtModalComponent, { size: 'lg' });
   }
 
 }

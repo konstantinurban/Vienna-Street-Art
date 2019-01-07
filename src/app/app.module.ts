@@ -11,9 +11,14 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OpenStreetMapComponent } from './open-street-map/open-street-map.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { AddArtModalComponent } from './open-street-map/add-art-modal/add-art-modal.component';
+// login
 import { LoginModalComponent } from './homepage/login-modal/login-modal.component';
-import { AddArtButtonComponent } from './open-street-map/add-art-button/add-art-button.component';
+// add-art
+import { AddArtModalComponent } from './open-street-map/add-art/add-art-modal/add-art-modal.component';
+import { AddArtButtonComponent } from './open-street-map/add-art/add-art-button/add-art-button.component';
+// recommend-art
+import { RecommendButtonComponent } from './open-street-map/recommend-art/recommend-button/recommend-button.component';
+import { RecommendModalComponent } from './open-street-map/recommend-art/recommend-modal/recommend-modal.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +28,8 @@ import { AddArtButtonComponent } from './open-street-map/add-art-button/add-art-
     AddArtModalComponent,
     LoginModalComponent,
     AddArtButtonComponent,
+    RecommendButtonComponent,
+    RecommendModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +46,7 @@ import { AddArtButtonComponent } from './open-street-map/add-art-button/add-art-
   ],
   bootstrap: [AppComponent],
   entryComponents: [
+    RecommendModalComponent,
     AddArtModalComponent,
     LoginModalComponent
   ]

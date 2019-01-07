@@ -1,0 +1,65 @@
+<div class="modal-content" tabindex="-1" role="dialog" aria-labelledby="Add New Art" aria-hidden="true">
+  <!-- Modal Header -->
+
+  <div class="modal-header">
+    <h5 class="modal-title">Add new Art Work</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <!-- Modal Body -->
+
+  <div class="modal-body">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="uploadImage">
+            <img src="assets/images/modalPic.jpg" alt="Uploaded Image" class="img-fluid samplePic">
+            <button type="submit" class="imgUploadButton mt-2 ml-5 modalButtons">Upload Image</button>
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <div class="artInfo">
+            <form>
+              <div class="form-group">
+                <label for="Art work name">Art Work Name</label>
+                <input type="text" class="form-control" id="artworkId" placeholder="Art Work">
+              </div>
+              <div class="form-group">
+                <label for="Artist Name">Artist Name</label>
+                <input type="text" class="form-control" id="artistId" placeholder="Artist">
+              </div>
+              <div class="form-row">
+                <div class="col">
+                  <label for="Artist Name">Geo Location</label>
+                  <button class="getLocationButton ml-1 modalButtons">My Location</button>
+                  <!-- <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Streetname / Number">
+                                    <input type="number" class="form-control mt-1" id="formGroupExampleInput2" placeholder="Zip Code"> -->
+                </div>
+                <div class="form-row">
+                  <div class="col">
+                    <input type="text" class="form-control mt-1" id="inputLong" placeholder="Latitude">
+                  </div>
+                  <div class="col">
+                    <input type="text" class="form-control mt-1" id="inputLat" placeholder="Longitude">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mt-2">
+                <label for="Artist Name">Addtional Information</label> <br>
+                <textarea name="name" rows="2" cols="49" class="additionalInfoText"></textarea>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal footer -->
+
+  <div class="modal-footer">
+    <button type="button" class="saveArtButton modalButtons">Save</button>
+  </div>
+</div>

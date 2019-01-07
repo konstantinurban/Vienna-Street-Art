@@ -12,7 +12,23 @@ declare let L; //this is the leaflet variable!
 })
 export class OpenStreetMapComponent implements OnInit {
 
-  constructor( ) { }
+//markerIcon
+ markerIcon = {
+  icon: L.icon({
+    iconSize: [25, 41],
+    iconAnchor: [13, 16],
+    iconUrl: './node_modules/leaflet/dist/images/marker-icon.png',
+    shadowUrl: './node_modules/leaflet/dist/images/marker-shadow.png'
+  })
+};
+
+//person icon
+// personIcon = L.icon({
+//   iconUrl: 'src/assets/icons/person_icon.png',
+//   iconAnchor: [13, 16], // point of the icon which will correspond to marker's location
+// });
+
+  constructor() { }
 
   ngOnInit() {
     const map = L.map('map', {
@@ -25,7 +41,7 @@ export class OpenStreetMapComponent implements OnInit {
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
       maxZoom: 18,
-      // minZoom: 13,
+      minZoom: 13,
       id: 'mapbox.streets',
       accessToken: 'pk.eyJ1IjoicHcxN2wwMDgiLCJhIjoiY2pua2c2OWxuMGVkOTNxbWh5MWNqajEwdyJ9.X_SuGwNGs12TwCsrsUvBxw'
     }).addTo(map);
@@ -43,11 +59,10 @@ export class OpenStreetMapComponent implements OnInit {
         position: 'topright'
       }).addTo(map);
 
-    //person icon
-    let personIcon = L.icon({
-      iconUrl: 'src/assets/icons/person_icon.png',
-      iconAnchor: [13, 16], // point of the icon which will correspond to marker's location
-    });
+  let personIcon = L.icon({
+  iconUrl: 'src/assets/icons/person_icon.png',
+  iconAnchor: [13, 16], // point of the icon which will correspond to marker's location
+});
 
     // get current location
     L.easyButton('<span class="myLocationIcon"><i class="myLocationIcon fa fa-map-marker fa-2x"></i></i></span>', function(btn, map) {
@@ -69,12 +84,18 @@ export class OpenStreetMapComponent implements OnInit {
         position: 'topright'
       }).addTo(map);
 
+
     // add marker
-    let markerIcon = L.icon({ iconUrl: 'src/assests/icons/marker.svg'});
-    L.marker([48.208, 16.373], {
-                icon: markerIcon, //can read the png for some reason...
-                riseOnHover: true
-              }).addTo(map);
+
+    var customOptions =
+    {
+    'className' : 'customPopup'
+    }
+
+    const marker = L.marker([48.209, 16.373], this.markerIcon).addTo(map);
+    marker.bindPopup("hello", customOptions);
+
+
 
     //search
     var searchLayer = new L.LayerGroup();
