@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 loaded and exported into a L variable.*/
 declare let L; //this is the leaflet variable!
 
+import { MapButtonsComponent } from './map-buttons/map-buttons';
 
 @Component({
   selector: 'app-open-street-map',
@@ -12,21 +13,15 @@ declare let L; //this is the leaflet variable!
 })
 export class OpenStreetMapComponent implements OnInit {
 
-//markerIcon
- markerIcon = {
-  icon: L.icon({
-    iconSize: [25, 41],
-    iconAnchor: [13, 16],
-    iconUrl: './node_modules/leaflet/dist/images/marker-icon.png',
-    shadowUrl: './node_modules/leaflet/dist/images/marker-shadow.png'
-  })
-};
-
-//person icon
-// personIcon = L.icon({
-//   iconUrl: 'src/assets/icons/person_icon.png',
-//   iconAnchor: [13, 16], // point of the icon which will correspond to marker's location
-// });
+  //markerIcon
+  markerIcon = {
+    icon: L.icon({
+      iconSize: [25, 41],
+      iconAnchor: [13, 16],
+      iconUrl: 'assets/icons/marker.svg',
+      shadowUrl: 'assets/icons/marker-shadow.png'
+    })
+  };
 
   constructor() { }
 
@@ -46,56 +41,19 @@ export class OpenStreetMapComponent implements OnInit {
       accessToken: 'pk.eyJ1IjoicHcxN2wwMDgiLCJhIjoiY2pua2c2OWxuMGVkOTNxbWh5MWNqajEwdyJ9.X_SuGwNGs12TwCsrsUvBxw'
     }).addTo(map);
 
-    // zoom button
-    L.control.zoom({
-      position: 'topright',
-    }).addTo(map);
-
-    // button to center map
-    L.easyButton('<span><i class="fa fa-compass fa-2x"></i></span>', function(btn, map) {
-      map.setView([48.208, 16.373], 13);
-    },
-      {
-        position: 'topright'
-      }).addTo(map);
-
-  let personIcon = L.icon({
-  iconUrl: 'src/assets/icons/person_icon.png',
-  iconAnchor: [13, 16], // point of the icon which will correspond to marker's location
-});
-
-    // get current location
-    L.easyButton('<span class="myLocationIcon"><i class="myLocationIcon fa fa-map-marker fa-2x"></i></i></span>', function(btn, map) {
-      map.locate({ setView: true, watch: false, enableHighAccuracy: true }) // set watch "true", to get realtime location, if im not mistaken
-        .on('locationfound', function(e) {
-          L.marker([e.latitude, e.longitude], { icon: personIcon }).addTo(map);
-          L.circle([e.latitude, e.longitude], {
-            weight: 1,
-            color: 'blue',
-            fillColor: '#cacaca',
-            fillOpacity: 0.2
-          }).addTo(map);
-        })
-        .on('locationerror', function(e) {
-          alert("Cannot access your location!");
-        })
-    },
-      {
-        position: 'topright'
-      }).addTo(map);
-
+    MapButtonsComponent.renderZoom(map);
+    MapButtonsComponent.renderCompass(map);
+    MapButtonsComponent.renderLocation(map);
 
     // add marker
 
     var customOptions =
     {
-    'className' : 'customPopup'
+      'className': 'customPopup'
     }
 
     const marker = L.marker([48.209, 16.373], this.markerIcon).addTo(map);
     marker.bindPopup("hello", customOptions);
-
-
 
     //search
     var searchLayer = new L.LayerGroup();

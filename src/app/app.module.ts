@@ -19,6 +19,7 @@ import { AddArtButtonComponent } from './open-street-map/add-art/add-art-button/
 // recommend-art
 import { RecommendButtonComponent } from './open-street-map/recommend-art/recommend-button/recommend-button.component';
 import { RecommendModalComponent } from './open-street-map/recommend-art/recommend-modal/recommend-modal.component';
+import { PopupsComponent } from './open-street-map/popups/popups.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { RecommendModalComponent } from './open-street-map/recommend-art/recomme
     AddArtButtonComponent,
     RecommendButtonComponent,
     RecommendModalComponent,
+    PopupsComponent,
   ],
   imports: [
     BrowserModule,
