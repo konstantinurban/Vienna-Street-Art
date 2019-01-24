@@ -4,7 +4,7 @@
     <strong class="mt-4">District</strong>
     <select class="ml-1" name="zipcode">
       <option>-All-</option>
-      <option *ngFor="let zipcode of artworkList">{{zipcode}}</option>
+      <option *ngFor="let zipcode of artworkList | duplicates">{{zipcode}}</option>
     </select>
   </div>
 </div>

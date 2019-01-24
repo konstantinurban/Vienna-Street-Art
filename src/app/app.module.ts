@@ -23,10 +23,12 @@ import { RecommendModalComponent } from './open-street-map/recommend-art/recomme
 import { PopupsComponent } from './open-street-map/popups/popups.component';
 
 import { ImageUploadComponent } from './open-street-map/image-upload/image-upload.component';
-import { Base64UploadComponent } from './open-street-map/base64-upload/base64-upload.component';
 import { FilterMapComponent } from './open-street-map/filter-map/filter-map.component';
 // import { ArtworkListViewComponent } from './open-street-map/artwork-list-view/artwork-list-view.component';
 // import { ArtworkListComponent } from './open-street-map/artwork-list/artwork-list.component';
+
+import { FiltersPipe } from './open-street-map/filter-map/filters.pipe';
+import { DuplicatesPipe } from './open-street-map/filter-map/duplicates.pipe';
 
 
 @NgModule({
@@ -41,8 +43,9 @@ import { FilterMapComponent } from './open-street-map/filter-map/filter-map.comp
     RecommendModalComponent,
     PopupsComponent,
     ImageUploadComponent,
-    Base64UploadComponent,
     FilterMapComponent,
+    FiltersPipe,
+    DuplicatesPipe
     // ArtworkListViewComponent,
     // ArtworkListComponent
   ],

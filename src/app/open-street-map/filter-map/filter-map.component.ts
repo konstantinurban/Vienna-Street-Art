@@ -9,18 +9,18 @@ import { Artwork, ArtworkService } from '../../_services/artwork.service';
 })
 export class FilterMapComponent implements OnInit {
   artworkList: Artwork[];
-  zipcode: number;
+  zipcode: string;
 
   constructor(private artworkService: ArtworkService) { }
 
   ngOnInit() {
     this.refresh();
+    console.log(this.zipcode);
   }
 
   refresh() {
     this.artworkService.retrieveAll().then((artworkList) => {
       this.artworkList = artworkList;
-      }
+    })
   }
-
 }
