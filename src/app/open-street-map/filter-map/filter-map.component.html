@@ -2,9 +2,9 @@
   <div class="filterButton leaflet-control">
     <i class="fa fa-filter fa-7x"></i>
     <strong class="mt-4">District</strong>
-    <select class="ml-1" name="zipcode">
+    <select class="ml-1" name="zipcode" [(ngModel)]="zipcode">
       <option>-All-</option>
-      <option *ngFor="let zipcode of artworkList | duplicates">{{zipcode}}</option>
+      <option *ngFor="let zipcode of artworkList | duplicates ">{{zipcode}}</option>
     </select>
   </div>
 </div>

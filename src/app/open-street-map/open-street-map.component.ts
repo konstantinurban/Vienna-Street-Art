@@ -72,9 +72,9 @@ export class OpenStreetMapComponent implements OnInit {
           artwork.name +
           "</b></span>" +
           "<br/>" +
-          artwork.filename +
-          "<br/>" +
-          artwork.firstname + artwork.lastname +
+          // artwork.filename +
+          // "<br/>" +
+          artwork.firstname + " " + artwork.lastname +
           "<br/>" +
           artwork.streetname + artwork.streetnumber + ", " + artwork.zipcode;
         console.log(artwork.name);
