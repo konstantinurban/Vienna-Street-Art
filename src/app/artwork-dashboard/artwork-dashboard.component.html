@@ -1,18 +1,22 @@
-<div class="grid grid-pad">
-  <a *ngFor="let artwork of artworkList" class="col-1-4">
-    <div class="module hero">
-      <h4>{{artwork.name}}</h4>
-      <div>
-        <img class="img-preview" src="{{artwork.imageBase64}}" alt="">
+
+<div class="flex-container">
+    <a *ngFor="let artwork of artworkList" >
+      <div class="module hero">
+        <h4>{{artwork.name}}</h4>
+        <div *ngIf="artwork.imageBase64">
+          <img class="img-preview" src="{{artwork.imageBase64}}" alt="">
+        </div>
+        <div *ngIf="artwork.imageBase64 == undefined">
+          <img class="img-preview" src="assets/icons/photo.svg" alt="">
+        </div>
+        <div>
+          <button class="button-dashboard" (click)="editArtwork(artwork)">
+            <img class="img-dashboard" src="assets/icons/edit.svg">
+          </button>
+          <button class="button-dashboard" (click)="deleteArtwork(artwork)">
+            <img class="img-dashboard" src="assets/icons/delete.svg">
+          </button>
+        </div>
       </div>
-      <div>
-        <button class="button-dashboard" (click)="editArtwork(artwork)">
-          <img class="img-dashboard" src="assets/icons/edit.svg">
-        </button>
-        <button class="button-dashboard" (click)="deleteArtwork(artwork)">
-          <img class="img-dashboard" src="assets/icons/delete.svg">
-        </button>
-      </div>
-    </div>
-  </a>
-</div>
+    </a>
+  </div>

@@ -1,100 +1,122 @@
     /* DashboardComponent's private CSS styles */
+
     [class*='col-'] {
-        float: left;
-        padding-right: 20px;
-        padding-bottom: 20px;
-      }
-      [class*='col-']:last-of-type {
-        padding-right: 0;
-      }
-      a {
-        text-decoration: none;
-      }
-      *, *:after, *:before {
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-      }
-      h3 {
-        text-align: center;
-        margin-bottom: 0;
-      }
-      h4 {
-        position: relative;
-      }
-      .grid {
-        margin: 0;
-      }
-      .col-1-4 {
-        width: 25%;
-      }
-      .module {
-        padding: 0px;
-        text-align: center;
-        color: #607d8b;
-        max-height: 260px;
-        min-width: 260px;
-        max-width: 260px;
-        /* background-color: #607d8b; */
-        border-style: solid;
-        border-radius: 10px;
-        border-color: #ffffff;
-        border-width: 10px;
-        box-shadow:0 6px 20px 0 rgba(0, 0, 0, 0.6);
-      }
-      .module:hover {
-        /* background-color: #eee; */
-        border-style: solid;
-        border-radius: 10px;
-        border-color:#607d8b;
-        cursor: pointer;
-        color: #607d8b;
-      }
-      .grid-pad {
-        padding: 10px 0;
-      }
-      .grid-pad > [class*='col-']:last-of-type {
-        padding-right: 20px;
-      }
-      @media (max-width: 600px) {
-        .module {
-          font-size: 10px;
-          max-height: 260px;
-          min-width: 260px;
-          max-width: 260px;
-        }
-      }
-      @media (max-width: 1024px) {
-        .grid {
-          margin: 0;
-        }
-        .module {
-          max-height: 260px;
-          min-width: 260px;
-          max-width: 260px;
-        }
-      }
+      float: left;
+      padding-right: 20px;
+      padding-bottom: 20px;
+    }
 
-      .img-preview {
-        width: 160px;
-        height: 90px;
-        object-fit: cover;
-      }
+    [class*='col-']:last-of-type {
+      padding-right: 0;
+    }
 
-      .img-dashboard {
-        width: 30px;
-        height: 30px;
-      }
+    a {
+      text-decoration: none;
+      margin-left: 10px;
+      /* margin-right: 5px; */
+      margin-bottom: 10px;
+    }
 
-      .button-dashboard {
-        padding: 0 0 0 0;
-        width: 40px;
-        height: 40px;
-        border-color: #ffffff;
-        background-color: #ffffff;
-      }
+    *, *:after, *:before {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
 
-      .button-dashboard:hover {
-        background-color: #ffffff;
-        border-color: #607D8B;
-      }
+    h3 {
+      text-align: center;
+      margin-bottom: 0;
+    }
+
+    h4 {
+      position: relative;
+    }
+
+    .grid {
+      margin: 0;
+    }
+
+    .col-1-4 {
+      width: 25%;
+    }
+
+    .module {
+      padding: 0px;
+      text-align: center;
+      color: #607d8b;
+      max-height: 260px;
+      min-width: 260px;
+      max-width: 260px;
+      /* background-color: #607d8b; */
+      border-style: solid;
+      border-radius: 10px;
+      border-color: #ffffff;
+      border-width: 10px;
+      box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.6);
+    }
+
+    .module:hover {
+      /* background-color: #eee; */
+      border-style: solid;
+      border-radius: 10px;
+      border-color: #607d8b;
+      cursor: pointer;
+      color: #607d8b;
+    }
+
+
+    .img-preview {
+      width: 160px;
+      height: 90px;
+      object-fit: cover;
+    }
+
+    .img-dashboard {
+      width: 30px;
+      height: 30px;
+    }
+
+    .button-dashboard {
+      padding: 0 0 0 0;
+      width: 40px;
+      height: 40px;
+      border-color: #ffffff;
+      background-color: #ffffff;
+    }
+
+    .button-dashboard:hover {
+      background-color: #ffffff;
+      border-color: #607D8B;
+    }
+
+    button {
+      font-family: Arial;
+      background-color: #eee;
+      border: 1px solid #14a014;
+      /* padding: 5px 10px; */
+      border-radius: 4px;
+      cursor: pointer;
+      cursor: hand;
+    }
+
+    button:hover {
+      background-color: #cfd8dc;
+    }
+
+    button:disabled {
+      background-color: #eee;
+      color: #aaa;
+      cursor: auto;
+    }
+
+    .flex-container {
+      display: flex;
+      justify-content: flex-start;
+      align-content: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .flex-list {
+      flex-basis: 30%;
+      flex-shrink: 0;
+    }

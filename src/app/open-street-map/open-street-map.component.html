@@ -4,7 +4,7 @@
   <!-- <app-add-art-button></app-add-art-button> -->
   <app-add-art-button #list (add)="input.startAddingArtwork()" (edit)="input.startEditingArtwork($event)"></app-add-art-button>
   <app-add-art-modal #input (ok)="list.refresh()"></app-add-art-modal>
-  <app-filter-map></app-filter-map>
+  <app-filter-map class="map-shadow"></app-filter-map>
 
   <!-- TODO make viewable only to user -->
   <app-recommend-button></app-recommend-button>

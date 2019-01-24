@@ -1,4 +1,14 @@
 #map {
-  height: 100vh;
+  height: 90vh;
   width: 100%;
+}
+
+.map-shadow {
+  /* margin: 10px; */
+  padding: 1px;
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #ffffff;
+  border-width: 10px;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.6);
 }

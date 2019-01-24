@@ -13,6 +13,9 @@
     border-radius: 4px 0 0 4px;
   }
 
+  table {
+    width: 100%;
+  }
 
   th, td {
     border-bottom: 1px solid #ddd;
@@ -34,4 +37,25 @@
 
   .button-list:hover {
     border-color: #607D8B;
+  }
+
+  
+  button {
+    font-family: Arial;
+    background-color: #eee;
+    border: 1px solid #14a014;
+    /* padding: 5px 10px; */
+    border-radius: 4px;
+    cursor: pointer;
+    cursor: hand;
+  }
+
+  button:hover {
+    background-color: #cfd8dc;
+  }
+
+  button:disabled {
+    background-color: #eee;
+    color: #aaa;
+    cursor: auto;
   }

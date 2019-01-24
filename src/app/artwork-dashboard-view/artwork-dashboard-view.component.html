@@ -1,2 +1,8 @@
-<app-artwork-dashboard #list (add)="input.startAddingArtwork()" (edit)="input.startEditingArtwork($event)"></app-artwork-dashboard>
 <app-artwork-input #input (ok)="list.refresh()"></app-artwork-input>
+
+<div class="container-fluid">
+    <div class="row">
+        <app-artwork-dashboard class="col-50" #list (add)="input.startAddingArtwork()" (edit)="input.startEditingArtwork($event)"></app-artwork-dashboard>
+        <app-open-street-map class="col-50 map-shadow"></app-open-street-map>
+    </div>
+</div>
