@@ -1,21 +1,17 @@
 .custom-file-upload {
     display: inline-block;
-    font-family: Arial;
+    padding: 5px 10px;
     background-color: #fff;
     border: 2px solid rgba(0, 0, 0, 0.2);
-    border-radius: 0px;
-    cursor: pointer;
     background-clip: padding-box;
-    font-family: Courier;
-    margin-top: 15px;
-    margin-left: 60px;
-    padding: 1px 8px 1px 8px
+    cursor: pointer;
+    border-radius: 0px;
+    margin-left: 55px;
 }
 
 .custom-file-upload:hover {
-  background-color: rgba(0, 0, 0, 0.2);
-  text-decoration: none;
-}
+    background-color: #cfd8dc;
+  }
 
 input[type="file"] {
     display: none;

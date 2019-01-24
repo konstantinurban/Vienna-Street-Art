@@ -17,36 +17,16 @@ export class AddArtButtonComponent implements OnInit {
 
 
   constructor(
-    private artworkService: ArtworkService,
     private addModalService: NgbModal
 
   ) { }
 
   ngOnInit() {
-    // this.refresh();
   }
-
-  // refresh() {
-  //   this.artworkService.retrieveAll().then(
-  //     artworkList => this.artworkList = artworkList
-  //   );
-  // }
 
   addArtwork() {
   //  this.add.emit();
     const modalRef = this.addModalService.open(AddArtModalComponent, { size: 'lg' });
   }
-
-  // editArtwork(artwork: Artwork) {
-  //   console.log('edit artwork ' + artwork.name + ' ' + artwork.id );
-  //   this.edit.emit(artwork.id);
-  // }
-
-  // deleteArtwork(artwork: Artwork) {
-  //   console.log('delete artwork ' + artwork.name + ' ' + artwork.id );
-  //   this.artworkService.delete(artwork.id).then(
-  //     () => this.refresh()
-  //   );
-  // }
 
 }

@@ -17,6 +17,7 @@ export class OpenStreetMapComponent implements OnInit {
   @Output() private add = new EventEmitter();
   @Output() private edit = new EventEmitter<number>();
   artworkList: Artwork[];
+  map;
 
   // markerIcon
   markerIcon = {
@@ -29,7 +30,6 @@ export class OpenStreetMapComponent implements OnInit {
   };
 
 
-  map: any;
 
 
 
@@ -82,6 +82,8 @@ export class OpenStreetMapComponent implements OnInit {
           .addTo(this.map)
           .bindPopup(popupInfo, popupOptions);
       }
+
     });
+
   }
 }

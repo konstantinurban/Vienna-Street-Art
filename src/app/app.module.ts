@@ -20,7 +20,7 @@ import { AddArtButtonComponent } from './open-street-map/add-art/add-art-button/
 // recommend-art
 import { RecommendButtonComponent } from './open-street-map/recommend-art/recommend-button/recommend-button.component';
 import { RecommendModalComponent } from './open-street-map/recommend-art/recommend-modal/recommend-modal.component';
-import { PopupsComponent } from './open-street-map/popups/popups.component';
+
 
 import { ImageUploadComponent } from './open-street-map/image-upload/image-upload.component';
 import { FilterMapComponent } from './open-street-map/filter-map/filter-map.component';
@@ -46,7 +46,6 @@ import { ArtworkDashboardViewComponent } from './artwork-dashboard-view/artwork-
     AddArtButtonComponent,
     RecommendButtonComponent,
     RecommendModalComponent,
-    PopupsComponent,
     ImageUploadComponent,
     FilterMapComponent,
     FiltersPipe,

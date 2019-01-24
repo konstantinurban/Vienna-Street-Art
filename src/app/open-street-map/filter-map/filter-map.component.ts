@@ -15,12 +15,11 @@ export class FilterMapComponent implements OnInit {
 
   ngOnInit() {
     this.refresh();
-    console.log(this.zipcode);
-  }
+    }
 
   refresh() {
     this.artworkService.retrieveAll().then((artworkList) => {
       this.artworkList = artworkList;
-    })
+    });
   }
 }
