@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 /*When you include the leaflet script inside the Angular project, it gets
 loaded and exported into a L variable.*/
 declare let L; //this is the leaflet variable!
 
 import { MapButtonsComponent } from './map-buttons/map-buttons';
+import { Artwork, ArtworkService } from '../_services/artwork.service';
+
 
 @Component({
   selector: 'app-open-street-map',
@@ -12,6 +14,10 @@ import { MapButtonsComponent } from './map-buttons/map-buttons';
   styleUrls: ['./open-street-map.component.css']
 })
 export class OpenStreetMapComponent implements OnInit {
+  @Output() private add = new EventEmitter();
+  @Output() private edit = new EventEmitter<number>();
+  artworkList: Artwork[];
+  map;
 
   //markerIcon
   markerIcon = {
@@ -23,14 +29,16 @@ export class OpenStreetMapComponent implements OnInit {
     })
   };
 
-  constructor() { }
+  constructor(private artworkService: ArtworkService) { }
 
   ngOnInit() {
-    const map = L.map('map', {
+    this.map = L.map('map', {
       center: [48.208, 16.373],
       zoom: 13,
       zoomControl: false,
     });
+
+    this.refresh();
 
     //base layer
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -39,35 +47,37 @@ export class OpenStreetMapComponent implements OnInit {
       minZoom: 13,
       id: 'mapbox.streets',
       accessToken: 'pk.eyJ1IjoicHcxN2wwMDgiLCJhIjoiY2pua2c2OWxuMGVkOTNxbWh5MWNqajEwdyJ9.X_SuGwNGs12TwCsrsUvBxw'
-    }).addTo(map);
+    }).addTo(this.map);
 
-    MapButtonsComponent.renderZoom(map);
-    MapButtonsComponent.renderCompass(map);
-    MapButtonsComponent.renderLocation(map);
+    MapButtonsComponent.renderZoom(this.map);
+    MapButtonsComponent.renderCompass(this.map);
+    MapButtonsComponent.renderLocation(this.map);
 
     // add marker
+    const marker = L.marker([48.209, 16.373], this.markerIcon).addTo(this.map);
+    marker.bindPopup("City Center");
+  }
 
-    var customOptions =
-    {
-      'className': 'customPopup'
+  refresh() {
+    this.artworkService.retrieveAll().then((artworkList) => {
+      this.artworkList = artworkList;
+      for (let artwork of this.artworkList) {
+        const popupOptions = { className: "customPopup" };
+        const popupInfo =
+          "<span class='customPopup'><b>" +
+          artwork.name +
+          "</b></span>" +
+          "<br/>" +
+          artwork.filename +
+          "<br/>" +
+          artwork.firstname + artwork.lastname +
+          "<br/>" +
+          artwork.streetname + artwork.streetnumber + ", " + artwork.zipcode;
+        console.log(artwork.name);
+        L.marker([artwork.latitude, artwork.longitude], this.markerIcon)
+          .addTo(this.map)
+          .bindPopup(popupInfo, popupOptions);
+      }
     }
-
-    const marker = L.marker([48.209, 16.373], this.markerIcon).addTo(map);
-    marker.bindPopup("hello", customOptions);
-
-    //search
-    var searchLayer = new L.LayerGroup();
-    map.addLayer(searchLayer);
-
-    var controlSearch = new L.Control.Search({
-      position: 'topleft',
-      layer: searchLayer,
-      initial: false,
-      zoom: 12,
-      marker: false
-    });
-
-    map.addControl(controlSearch);
-
   }
 }

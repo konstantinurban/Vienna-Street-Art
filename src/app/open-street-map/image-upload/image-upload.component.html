@@ -1,0 +1,17 @@
+<div>
+
+  <div class="row">
+    <div class="col-75">
+      <label>{{filename}}</label>
+    </div>
+    <div class="col-25">
+      <label for="photo" class="custom-file-upload">
+        <input type="file" class="uploadButton" accept="image/png" id="photo" name="photo" (change)="onFileChange($event)" #fileInput>
+        Upload Image
+      </label>
+      <button type="button" (click)="clearFile()">Clear</button>
+    </div>
+  </div>
+
+
+</div>

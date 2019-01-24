@@ -1,0 +1,10 @@
+<div class="leaflet-top leaflet-left">
+  <div class="filterButton leaflet-control">
+    <i class="fa fa-filter fa-7x"></i>
+    <strong class="mt-4">District</strong>
+    <select class="ml-1" name="zipcode">
+      <option>-All-</option>
+      <option *ngFor="let zipcode of artworkList">{{zipcode}}</option>
+    </select>
+  </div>
+</div>

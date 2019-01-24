@@ -1,65 +1,101 @@
-<div class="modal-content" tabindex="-1" role="dialog" aria-labelledby="Add New Art" aria-hidden="true">
-  <!-- Modal Header -->
+<div *ngIf="artwork">
 
-  <div class="modal-header">
-    <h5 class="modal-title">Add new Art Work</h5>
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
+  <div class="modal-content" tabindex="-1" role="dialog" aria-labelledby="Add New Art" aria-hidden="true">
+    <!-- Modal Header -->
+    <form novalidate #form="ngForm">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Artwork</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
 
-  <!-- Modal Body -->
-
-  <div class="modal-body">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-4">
-          <div class="uploadImage">
-            <img src="assets/images/modalPic.jpg" alt="Uploaded Image" class="img-fluid samplePic">
-            <button type="submit" class="imgUploadButton mt-2 ml-5 modalButtons">Upload Image</button>
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="uploadImage">
+                <!-- <img src="assets/images/modalPic.jpg" alt="Uploaded Image" class="img-fluid samplePic"> -->
+                <!-- <img src="{{artwork.imageBase64}}" alt=""> -->
+                <!-- <app-image-upload #imageUpload (uploadcompleted)="imageUploadCompleted($event)"></app-image-upload> -->
+              </div>
+            </div>
+            <!--  -->
+            <div class="col-25">
+              <label for="photo">Foto:</label>
+            </div>
+            <div class="col-75">
+              <app-image-upload #imageUpload (uploadcompleted)="imageUploadCompleted($event)"></app-image-upload>
+            </div>
           </div>
-        </div>
-        <div class="col-sm-8">
-          <div class="artInfo">
-            <form>
-              <div class="form-group">
-                <label for="Art work name">Art Work Name</label>
-                <input type="text" class="form-control" id="artworkId" placeholder="Art Work">
-              </div>
-              <div class="form-group">
-                <label for="Artist Name">Artist Name</label>
-                <input type="text" class="form-control" id="artistId" placeholder="Artist">
-              </div>
-              <div class="form-row">
-                <div class="col">
-                  <label for="Artist Name">Geo Location</label>
-                  <button class="getLocationButton ml-1 modalButtons">My Location</button>
-                  <!-- <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Streetname / Number">
-                                    <input type="number" class="form-control mt-1" id="formGroupExampleInput2" placeholder="Zip Code"> -->
+          <div class="row">
+            <div class="col-25">
+              <label for="photo">Vorschau:</label>
+            </div>
+            <div class="col-75">
+              <img src="{{artwork.imageBase64}}" alt="">
+            </div>
+            <!--  -->
+            <div class="col-sm-8">
+              <div class="artInfo">
+                <div class="form-group">
+                  <label for="Art work name">Art Work Name</label>
+                  <input type="text" class="form-control" [(ngModel)]="artwork.name" id="title" name="title" required minlength="2" placeholder="Art Work">
+                </div>
+                <div class="form-row">
+                  <label for="Artist Name">Artist Name</label>
+                </div>
+                <div lass="col">
+                  <input type="text" class="form-control" [(ngModel)]="artwork.firstname" id="firstname" name="firstname" required minlength="2" placeholder="First Name">
+                </div>
+                <div lass="col">
+                  <input type="text" class="form-control mt-1" [(ngModel)]="artwork.lastname" id="lastname" name="lastname" required minlength="2" placeholder="Last Name">
+                </div>
+                <div class="form-row">
+                  <label for="Artist Name">Location</label>
+                  <div class="form-row">
+                    <div class="col">
+                      <!-- <button class="getLocationButton ml-1 modalButtons">My Location</button> -->
+                      <input type="text" class="form-control ml-1" [(ngModel)]="artwork.streetname" id="streetNameInput" name="streetname" placeholder="Streetname">
+                    </div>
+                    <div lass="col">
+                      <input type="number" class="form-control mt-1" [(ngModel)]="artwork.streetnumber" id="numberInput" name="number" placeholder="Number">
+                    </div>
+                    <div class="form-row">
+                      <div lass="col">
+                        <input type="number" class="form-control mt-1 ml-3" [(ngModel)]="artwork.zipcode" id="zipcodeInput" name="zipcode" placeholder="Zipcode">
+                      </div>
+                      <div lass="col">
+                        <input type="text" class="form-control mt-1 ml-3" id="cityInput" placeholder="City">
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="form-row">
                   <div class="col">
-                    <input type="text" class="form-control mt-1" id="inputLong" placeholder="Latitude">
+                    <input type="text" class="form-control mt-1" [(ngModel)]="artwork.longitude" id="longitude" name="longitude" min="0.0" max="360.0" placeholder="Longitude">
                   </div>
                   <div class="col">
-                    <input type="text" class="form-control mt-1" id="inputLat" placeholder="Longitude">
+                    <input type="text" class="form-control mt-1" [(ngModel)]="artwork.latitude" id="latitude" name="latitude" min="0.0" max="360.0" placeholder="Latitude">
                   </div>
                 </div>
               </div>
-              <div class="form-group mt-2">
-                <label for="Artist Name">Addtional Information</label> <br>
-                <textarea name="name" rows="2" cols="49" class="additionalInfoText"></textarea>
-              </div>
-            </form>
+              <!-- <div class="form-group mt-2">
+                  <label for="Artist Name">Addtional Information</label> <br>
+                  <textarea name="name" rows="2" cols="49" class="additionalInfoText"></textarea>
+                </div> -->
+              <!-- </form> -->
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- Modal footer -->
+      <!-- Modal footer -->
 
-  <div class="modal-footer">
-    <button type="button" class="saveArtButton modalButtons">Save</button>
+      <div class="modal-footer">
+        <button *ngIf="form.valid" class="saveArtButton modalButtons" (click)="finishWithOk()">Save</button>
+      </div>
+    </form>
   </div>
 </div>

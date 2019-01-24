@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
@@ -21,6 +22,13 @@ import { RecommendButtonComponent } from './open-street-map/recommend-art/recomm
 import { RecommendModalComponent } from './open-street-map/recommend-art/recommend-modal/recommend-modal.component';
 import { PopupsComponent } from './open-street-map/popups/popups.component';
 
+import { ImageUploadComponent } from './open-street-map/image-upload/image-upload.component';
+import { Base64UploadComponent } from './open-street-map/base64-upload/base64-upload.component';
+import { FilterMapComponent } from './open-street-map/filter-map/filter-map.component';
+// import { ArtworkListViewComponent } from './open-street-map/artwork-list-view/artwork-list-view.component';
+// import { ArtworkListComponent } from './open-street-map/artwork-list/artwork-list.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +40,11 @@ import { PopupsComponent } from './open-street-map/popups/popups.component';
     RecommendButtonComponent,
     RecommendModalComponent,
     PopupsComponent,
+    ImageUploadComponent,
+    Base64UploadComponent,
+    FilterMapComponent,
+    // ArtworkListViewComponent,
+    // ArtworkListComponent
   ],
   imports: [
     BrowserModule,
@@ -40,11 +53,13 @@ import { PopupsComponent } from './open-street-map/popups/popups.component';
     MatCheckboxModule,
     AngularFontAwesomeModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     NgbModule.forRoot()
-
   ],
   providers: [
-    NgbActiveModal
+    NgbActiveModal,
   ],
   bootstrap: [AppComponent],
   entryComponents: [

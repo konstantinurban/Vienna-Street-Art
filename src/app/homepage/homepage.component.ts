@@ -20,6 +20,7 @@ export class HomepageComponent implements OnInit {
   }
 
   login() {
+    alert("login clicked");
     const modalRef = this.modalService.open(LoginModalComponent, { size: 'sm' });
   }
 

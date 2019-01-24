@@ -1,0 +1,15 @@
+.filterButton {
+  color: #1770a6;
+  font-size: 15px;
+  /* width: 70px; */
+  /* height: 70px; */
+  /* line-height: 30px; */
+  background-color: #fff;
+  text-align: center;
+  cursor: pointer;
+  background-position: 50% 50%;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background-clip: padding-box;
+  border-radius: 0;
+  padding: 3px;
+}
