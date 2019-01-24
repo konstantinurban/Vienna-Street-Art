@@ -34,6 +34,7 @@ import { ArtworkListComponent } from './artwork-list/artwork-list.component';
 import { ArtworkListViewComponent } from './artwork-list-view/artwork-list-view.component';
 import { ArtworkDashboardComponent } from './artwork-dashboard/artwork-dashboard.component';
 import { ArtworkDashboardViewComponent } from './artwork-dashboard-view/artwork-dashboard-view.component';
+import { ViewsNavComponent } from './open-street-map/views-nav/views-nav.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { ArtworkDashboardViewComponent } from './artwork-dashboard-view/artwork-
     ArtworkListComponent,
     ArtworkListViewComponent,
     ArtworkDashboardComponent,
-    ArtworkDashboardViewComponent
+    ArtworkDashboardViewComponent,
+    ViewsNavComponent
     // ArtworkListViewComponent,
     // ArtworkListComponent
   ],

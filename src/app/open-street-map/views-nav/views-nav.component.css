@@ -1,0 +1,25 @@
+.views-nav {
+  margin-left: 45em;
+}
+
+.viewNavButton {
+  background-color: #fff;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background-clip: padding-box;
+  cursor: pointer;
+  border-radius: 0px;
+}
+
+.modal-content {
+  font-family: Courier;
+}
+
+.viewNavButton {
+  /* margin-left: 4em; */
+  color: black;
+}
+
+.viewNavButton:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+}
