@@ -1,0 +1,2 @@
+<app-artwork-dashboard #list (add)="input.startAddingArtwork()" (edit)="input.startEditingArtwork($event)"></app-artwork-dashboard>
+<app-artwork-input #input (ok)="list.refresh()"></app-artwork-input>

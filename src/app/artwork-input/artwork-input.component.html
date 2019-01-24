@@ -1,0 +1,106 @@
+<div *ngIf="artwork" id="myModal" class="dev-modal">
+  <!-- Modal content -->
+  <div class="dev-modal-content">
+    <form novalidate #form="ngForm">
+      <h2>{{artwork.id ? 'Bearbeite Kunstwerk' : 'Füge Kunstwerk hinzu'}} ...</h2>
+      <div class="row" *ngIf="artwork.id">
+        <div class="col-25">
+          <label for="id">ID:</label>
+        </div>
+        <div class="col-75">
+          <input type="number" [value]="artwork.id" id="id" name="id" readonly>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="title">Titel:</label>
+        </div>
+        <div class="col-75">
+          <input type="text" [(ngModel)]="artwork.name" id="title" name="title" required minlength="2">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="firstname">Vorname:</label>
+        </div>
+        <div class="col-75">
+          <input type="text" [(ngModel)]="artwork.firstname" id="firstname" name="firstname" required minlength="2">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="lastname">Nachname:</label>
+        </div>
+        <div class="col-75">
+          <input type="text" [(ngModel)]="artwork.lastname" id="lastname" name="lastname" required minlength="2">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="streetname">Strasse:</label>
+        </div>
+        <div class="col-75">
+          <input type="text" [(ngModel)]="artwork.streetname" id="streetname" name="streetname" required minlength="2">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="streetnumber">Hausnummer:</label>
+        </div>
+        <div class="col-75">
+          <input type="number" [(ngModel)]="artwork.streetnumber" id="streetnumber" name="streetnumber" min="1" max="999">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="zipcode">Postleitzahl:</label>
+        </div>
+        <div class="col-75">
+          <input type="text" [(ngModel)]="artwork.zipcode" id="zipcode" name="zipcode" required minlength="2">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="longitude">Längengrad:</label>
+        </div>
+        <div class="col-75">
+          <input type="number" [(ngModel)]="artwork.longitude" id="longitude" name="longitude" min="0.0" max="360.0">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="latitude">Breitengrad:</label>
+        </div>
+        <div class="col-75">
+          <input type="number" [(ngModel)]="artwork.latitude" id="latitude" name="latitude" min="0.0" max="360.0">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="photo">Foto:</label>
+        </div>
+        <div class="col-75">
+          <app-image-upload #imageUpload (uploadcompleted)="imageUploadCompleted($event)"></app-image-upload>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="photo">Vorschau:</label>
+        </div>
+        <div class="col-75">
+          <img src="{{artwork.imageBase64}}" alt="">
+        </div>
+      </div>
+      <div class="row">
+        <button *ngIf="form.valid" (click)="finishWithOk()">Ok</button>
+        <button (click)="finishWithCancel()">Abbrechen</button>
+      </div>
+    </form>
+  </div>
+
+</div>

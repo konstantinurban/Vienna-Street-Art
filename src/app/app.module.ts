@@ -29,6 +29,11 @@ import { FilterMapComponent } from './open-street-map/filter-map/filter-map.comp
 
 import { FiltersPipe } from './open-street-map/filter-map/filters.pipe';
 import { DuplicatesPipe } from './open-street-map/filter-map/duplicates.pipe';
+import { ArtworkInputComponent } from './artwork-input/artwork-input.component';
+import { ArtworkListComponent } from './artwork-list/artwork-list.component';
+import { ArtworkListViewComponent } from './artwork-list-view/artwork-list-view.component';
+import { ArtworkDashboardComponent } from './artwork-dashboard/artwork-dashboard.component';
+import { ArtworkDashboardViewComponent } from './artwork-dashboard-view/artwork-dashboard-view.component';
 
 
 @NgModule({
@@ -45,7 +50,12 @@ import { DuplicatesPipe } from './open-street-map/filter-map/duplicates.pipe';
     ImageUploadComponent,
     FilterMapComponent,
     FiltersPipe,
-    DuplicatesPipe
+    DuplicatesPipe,
+    ArtworkInputComponent,
+    ArtworkListComponent,
+    ArtworkListViewComponent,
+    ArtworkDashboardComponent,
+    ArtworkDashboardViewComponent
     // ArtworkListViewComponent,
     // ArtworkListComponent
   ],

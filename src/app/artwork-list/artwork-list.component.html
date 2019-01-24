@@ -1,0 +1,29 @@
+<table class="table-striped">
+  <thead>
+    <th>id</th>
+    <th>Kunstwerkname</th>
+    <th>Strasse</th>
+    <th>PLZ</th>
+    <th>        
+      <button class="button-list" (click)="addArtwork()">
+        <img src="assets/icons/add.svg">
+      </button>
+    </th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let artwork of artworkList">
+      <td><span class="">{{artwork.id}}</span></td>
+      <td>{{artwork.name}}</td>
+      <td>{{artwork.streetname}}</td>
+      <td>{{artwork.zipcode}}</td>
+      <td>
+        <button class="button-list" (click)="editArtwork(artwork)">
+          <img src="assets/icons/edit.svg">
+        </button>
+        <button class="button-list" (click)="deleteArtwork(artwork)">
+          <img src="assets/icons/delete.svg">
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

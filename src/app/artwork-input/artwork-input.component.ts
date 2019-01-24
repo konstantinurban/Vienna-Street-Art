@@ -1,24 +1,20 @@
+import { Artwork, ArtworkService } from './../_services/artwork.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Artwork, ArtworkService } from '../../../_services/artwork.service';
+
 
 @Component({
-  selector: 'app-add-art-modal',
-  templateUrl: './add-art-modal.component.html',
-  styleUrls: ['./add-art-modal.component.css']
+  selector: 'app-artwork-input',
+  templateUrl: './artwork-input.component.html',
+  styleUrls: ['./artwork-input.component.css']
 })
-export class AddArtModalComponent implements OnInit {
+export class ArtworkInputComponent implements OnInit {
   @Output() ok = new EventEmitter<Artwork>();
   @Output() cancel = new EventEmitter();
   artwork: Artwork;
 
-  constructor(
-    public activeModal: NgbActiveModal,
-    private artworkService: ArtworkService
-  ) { }
+  constructor(private artworkService: ArtworkService) { }
 
   ngOnInit() {
-    this.startAddingArtwork();
   }
 
   startAddingArtwork() {
@@ -28,23 +24,18 @@ export class AddArtModalComponent implements OnInit {
 
   startEditingArtwork(id: number) {
     console.log('start editing artwork ' + id);
+
     this.artworkService.retrieve(id).then(
-      artwork => {
-        this.artwork = artwork;
-        console.log('edit Artwork = artwork');
-      }
+      artwork => this.artwork = artwork
     );
   }
 
   finishWithOk() {
     console.log('Input OK');
-    this.activeModal.dismiss('Cross click');
-    console.log('finishWithOK ' + this.artwork);
-    console.log('finishWithOK ' + this.artwork.imageBase64);
+
     this.createOrUpdate().then(
       () => {
         this.ok.emit(this.artwork);
-        console.log('ok Artwork = null');
         this.artwork = null;
       }
     );
@@ -54,7 +45,6 @@ export class AddArtModalComponent implements OnInit {
     console.log('Input Cancel');
 
     this.cancel.emit();
-    console.log('cancel Artwork = null');
     this.artwork = null;
   }
 
@@ -62,8 +52,6 @@ export class AddArtModalComponent implements OnInit {
     if (this.artwork.id) {
       return this.artworkService.update(this.artwork);
     } else {
-      console.log('createOrUpdate ' + this.artwork);
-      console.log('createOrUpdate ' + this.artwork.imageBase64);
       return this.artworkService.create(this.artwork);
     }
   }

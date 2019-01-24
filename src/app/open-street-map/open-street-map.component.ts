@@ -18,7 +18,7 @@ export class OpenStreetMapComponent implements OnInit {
   @Output() private edit = new EventEmitter<number>();
   artworkList: Artwork[];
 
-  //markerIcon
+  // markerIcon
   markerIcon = {
     icon: L.icon({
       iconSize: [25, 41],
@@ -27,6 +27,11 @@ export class OpenStreetMapComponent implements OnInit {
       shadowUrl: 'assets/icons/marker-shadow.png'
     })
   };
+
+
+  map: any;
+
+
 
   constructor(private artworkService: ArtworkService) { }
 
@@ -39,7 +44,7 @@ export class OpenStreetMapComponent implements OnInit {
 
     this.refresh();
 
-    //base layer
+    // base layer
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
       maxZoom: 18,
@@ -54,14 +59,14 @@ export class OpenStreetMapComponent implements OnInit {
 
     // add marker
     const marker = L.marker([48.209, 16.373], this.markerIcon).addTo(this.map);
-    marker.bindPopup("City Center");
+    marker.bindPopup('City Center');
   }
 
   refresh() {
-    this.artworkService.retrieveAll().then((artworkList) => {
+    this.artworkService.retrieveAll().then( (artworkList) => {
       this.artworkList = artworkList;
-      for (let artwork of this.artworkList) {
-        const popupOptions = { className: "customPopup" };
+      for (const artwork of this.artworkList) {
+        const popupOptions = { className: 'customPopup' };
         const popupInfo =
           "<span class='customPopup'><b>" +
           artwork.name +
@@ -77,6 +82,6 @@ export class OpenStreetMapComponent implements OnInit {
           .addTo(this.map)
           .bindPopup(popupInfo, popupOptions);
       }
-    }
+    });
   }
 }
