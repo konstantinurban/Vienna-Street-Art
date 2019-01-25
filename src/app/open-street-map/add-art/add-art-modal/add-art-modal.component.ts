@@ -24,6 +24,7 @@ export class AddArtModalComponent implements OnInit {
   startAddingArtwork() {
     console.log('start adding artwork');
     this.artwork = new Artwork();
+    console.log("hello");
   }
 
   startEditingArtwork(id: number) {
