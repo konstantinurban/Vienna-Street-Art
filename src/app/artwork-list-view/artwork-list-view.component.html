@@ -3,11 +3,11 @@
 <div class="">
     <div class="flex-container">
         <app-artwork-list class="flex-list map-shadow" #list (add)="input.startAddingArtwork()" (edit)="input.startEditingArtwork($event)"></app-artwork-list>
-        <app-open-street-map class="flex-map map-shadow"></app-open-street-map>
+        <app-open-street-map class="flex-map map-shadow" #map ></app-open-street-map>
     </div>
 </div>
 
-<app-artwork-input #input (ok)="list.refresh()"></app-artwork-input>
+<app-artwork-input #input (ok)="update()"></app-artwork-input>
 
 <!-- <div class="container-fluid">
     <div class="row map-padding">

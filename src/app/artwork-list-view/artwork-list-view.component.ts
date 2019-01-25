@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
+
 
 @Component({
   selector: 'app-artwork-list-view',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArtworkListViewComponent implements OnInit {
 
+  @ViewChild('list') listElement;
+  @ViewChild('map') mapElement;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  update() {
+    console.log('update');
+    this.listElement.refresh();
+    this.mapElement.refresh();
   }
 
 }
