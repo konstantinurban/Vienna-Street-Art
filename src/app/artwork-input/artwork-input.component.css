@@ -3,14 +3,19 @@
     /* display: none;  Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    padding-top: 55px; /* Location of the box */
     left: 0;
     top: 0;
-    width: 30%; /* Full width */
+    width: 40%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     /*background-color: rgb(0,0,0);  Fallback color */
     /*background-color: rgba(91, 99, 94, 0.4); /* Black w/ opacity */
+    /* position: fixed;
+    padding-top: 55px;
+    height: 100%;
+    overflow: auto; */
+    border: 2px solid rgba(0, 0, 0, 0.2);
   }
 
   /* Modal Content */
@@ -50,7 +55,7 @@
 
   .col-75 {
   	float: left;
-  	width: 75%;
+  	width: 100%;
   	margin-top: 6px;
   }
 
@@ -105,3 +110,8 @@
   	color: #aaa;
   	cursor: auto;
   }
+
+.artwork-input-btn {
+  margin-top: 9px;
+  margin-left: 95px;
+}

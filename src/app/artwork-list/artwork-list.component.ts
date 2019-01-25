@@ -12,12 +12,13 @@ export class ArtworkListComponent implements OnInit {
   @Output() private edit = new EventEmitter<number>();
   artworkList: Artwork[];
 
-  constructor(private artworkService: ArtworkService) { }
+  constructor(
+    private artworkService: ArtworkService,
+) { }
 
   ngOnInit() {
     this.refresh();
   }
-
   refresh() {
     this.artworkService.retrieveAll().then(
       artworkList => this.artworkList = artworkList
@@ -27,6 +28,7 @@ export class ArtworkListComponent implements OnInit {
   addArtwork() {
     console.log('add artwork');
     this.add.emit();
+
   }
 
   editArtwork(artwork: Artwork) {
