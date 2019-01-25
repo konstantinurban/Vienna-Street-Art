@@ -1,4 +1,4 @@
-<app-artwork-input #input (ok)="list.refresh()"></app-artwork-input>
+<!-- <app-artwork-input #input (ok)="list.refresh()"></app-artwork-input>
 
 <div class="container-fluid">
   <div class="row">
@@ -7,4 +7,13 @@
       <app-open-street-map class="col-lg-7 map-shadow box"></app-open-street-map>
     </div>
   </div>
+</div> -->
+
+<div class="">
+  <div class="flex-container">
+      <app-artwork-dashboard class="flex-list" #list (add)="input.startAddingArtwork()" (edit)="input.startEditingArtwork($event)"></app-artwork-dashboard>
+      <app-open-street-map class="flex-map map-shadow"></app-open-street-map>
+  </div>
 </div>
+
+<app-artwork-input #input (ok)="list.refresh()"></app-artwork-input>
