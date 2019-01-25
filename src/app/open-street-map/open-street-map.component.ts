@@ -61,30 +61,6 @@ export class OpenStreetMapComponent implements OnInit {
     marker.bindPopup('City Center');
   }
 
-  // refresh() {
-  //   this.artworkService.retrieveAll().then( (artworkList) => {
-  //     this.artworkList = artworkList;
-  //     for (const artwork of this.artworkList) {
-  //       const popupOptions = { className: 'customPopup' };
-  //       const popupInfo =
-  //         "<span class='customPopup'><b>" +
-  //         artwork.name +
-  //         "</b></span>" +
-  //         "<br/>" +
-  //         // artwork.filename +
-  //         // "<br/>" +
-  //         artwork.firstname + " " + artwork.lastname +
-  //         "<br/>" +
-  //         artwork.streetname + artwork.streetnumber + ", " + artwork.zipcode;
-  //       console.log(artwork.name);
-  //       L.marker([artwork.latitude, artwork.longitude], this.markerIcon)
-  //         .addTo(this.map)
-  //         .bindPopup(popupInfo, popupOptions);
-  //     }
-  //
-  //   });
-  //
-  // }
 
   buildMarkers() {
     const popupOptions = { className : "customPopup test2" };
@@ -115,6 +91,7 @@ export class OpenStreetMapComponent implements OnInit {
   }
 
   editArtwork() {
+    this.add.emit();
     alert("editing");
   }
 
