@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ElementRef } from '@angular/core';
 
 /*When you include the leaflet script inside the Angular project, it gets
 loaded and exported into a L variable.*/
@@ -29,11 +29,10 @@ export class OpenStreetMapComponent implements OnInit {
     })
   };
 
-
-
-
-
-  constructor(private artworkService: ArtworkService) { }
+  constructor(
+    private artworkService: ArtworkService,
+    private elementRef: ElementRef
+  ) { }
 
   ngOnInit() {
     this.map = L.map('map', {
@@ -88,28 +87,30 @@ export class OpenStreetMapComponent implements OnInit {
   // }
 
   buildMarkers() {
-    const popupOptions = {
-      className = "customPopup test2"
-    };
-
+    const popupOptions = { className : "customPopup test2" };
     const _this = this;
-
-    for (let artwork of this.artworklist) {
+    for (let artwork of this.artworkList) {
       const popupInfo = `
-          ${artwork.name} <br> ${artwork.filename}
-          <br><button class="edit">Edit</button>
-          <br><button class="delete">Delete</button>`;
-
+          <b> ${artwork.name} </b> <br>
+          ${artwork.firstname} ${artwork.lastname} <br>
+          ${artwork.streetname} ${artwork.streetnumber}, ${artwork.zipcode}
+          <br><i class="fa fa-edit edit popupBtn"></i> <i class="fa fa-trash delete popupBtn"></i>`;
       L.marker([artwork.latitude, artwork.longitude], this.markerIcon)
         .addTo(this.map)
         .bindPopup(popupInfo, popupOptions)
         .on("popupopen", () => {
-          this.elementRef.nativeElement
+          _this.elementRef.nativeElement
             .querySelector(".edit")
             .addEventListener("click", e => {
               _this.editArtwork();
             });
-        })
+        }).on("popupopen", () => {
+          _this.elementRef.nativeElement
+            .querySelector(".delete")
+            .addEventListener("click", e => {
+              _this.deleteArtwork();
+            });
+        });
     }
   }
 
@@ -117,16 +118,16 @@ export class OpenStreetMapComponent implements OnInit {
     alert("editing");
   }
 
-  refresh(): void {
+  deleteArtwork() {
+    alert("deleting");
+  }
+
+  refresh() {
     this.artworkService.retrieveAll().then((artworkList) => {
       this.artworkList = artworkList;
       console.log(this.artworkList);
       this.buildMarkers();
     });
   }
-
-}
-
-
 
 }

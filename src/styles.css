@@ -46,3 +46,13 @@ input[type=text], input[type=number], select, textarea {
   padding-right: 8px;
   padding-bottom: 5px;
 }
+
+.popupBtn {
+  font-size: 20px;
+}
+.edit {
+  color: green;
+}
+.delete {
+  color: red;
+}
