@@ -2,7 +2,9 @@
 
 <div class="container-fluid">
   <div class="row">
-    <app-artwork-dashboard class="col-lg-5 mt-3" #list (add)="input.startAddingArtwork()" (edit)="input.startEditingArtwork($event)"></app-artwork-dashboard>
-    <app-open-street-map class="col-lg-7 map-shadow"></app-open-street-map>
+    <div class="wrap">
+      <app-artwork-dashboard class="col-lg-5 mt-3 box" #list (add)="input.startAddingArtwork()" (edit)="input.startEditingArtwork($event)"></app-artwork-dashboard>
+      <app-open-street-map class="col-lg-7 map-shadow box"></app-open-street-map>
+    </div>
   </div>
 </div>

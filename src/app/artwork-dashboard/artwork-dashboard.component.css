@@ -1,5 +1,6 @@
     /* DashboardComponent's private CSS styles */
 
+
     [class*='col-'] {
       float: left;
       padding-right: 20px;
@@ -44,15 +45,16 @@
       padding: 0px;
       text-align: center;
       color: #607d8b;
-      max-height: 260px;
-      min-width: 260px;
-      max-width: 260px;
+      /* max-height: 260px; */
+      /* min-width: 260px; */
+      /* max-width: 260px; */
       /* background-color: #607d8b; */
       border-style: solid;
       border-radius: 10px;
       border-color: #ffffff;
       border-width: 10px;
       box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.6);
+      width: 480px;
     }
 
     .module:hover {
@@ -141,7 +143,7 @@
     }
 
     button {
-      font-family: Arial;
+      font-family: Courier;
       background-color: #eee;
       border: 1px solid #14a014;
       padding: 5px 10px;

@@ -42,3 +42,20 @@
         margin-top: 0;
     }
 }
+
+.scroll {
+  overflow: auto;
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+
+
+.wrap{
+  display:flex;
+}
+
+.box{
+    height: 100vh;
+    width: 50vw;
+    overflow: scroll;
+}

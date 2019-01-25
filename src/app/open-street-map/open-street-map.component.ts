@@ -62,28 +62,71 @@ export class OpenStreetMapComponent implements OnInit {
     marker.bindPopup('City Center');
   }
 
-  refresh() {
-    this.artworkService.retrieveAll().then( (artworkList) => {
-      this.artworkList = artworkList;
-      for (const artwork of this.artworkList) {
-        const popupOptions = { className: 'customPopup' };
-        const popupInfo =
-          "<span class='customPopup'><b>" +
-          artwork.name +
-          "</b></span>" +
-          "<br/>" +
-          // artwork.filename +
-          // "<br/>" +
-          artwork.firstname + " " + artwork.lastname +
-          "<br/>" +
-          artwork.streetname + artwork.streetnumber + ", " + artwork.zipcode;
-        console.log(artwork.name);
-        L.marker([artwork.latitude, artwork.longitude], this.markerIcon)
-          .addTo(this.map)
-          .bindPopup(popupInfo, popupOptions);
-      }
+  // refresh() {
+  //   this.artworkService.retrieveAll().then( (artworkList) => {
+  //     this.artworkList = artworkList;
+  //     for (const artwork of this.artworkList) {
+  //       const popupOptions = { className: 'customPopup' };
+  //       const popupInfo =
+  //         "<span class='customPopup'><b>" +
+  //         artwork.name +
+  //         "</b></span>" +
+  //         "<br/>" +
+  //         // artwork.filename +
+  //         // "<br/>" +
+  //         artwork.firstname + " " + artwork.lastname +
+  //         "<br/>" +
+  //         artwork.streetname + artwork.streetnumber + ", " + artwork.zipcode;
+  //       console.log(artwork.name);
+  //       L.marker([artwork.latitude, artwork.longitude], this.markerIcon)
+  //         .addTo(this.map)
+  //         .bindPopup(popupInfo, popupOptions);
+  //     }
+  //
+  //   });
+  //
+  // }
 
-    });
+  buildMarkers() {
+    const popupOptions = {
+      className = "customPopup test2"
+    };
 
+    const _this = this;
+
+    for (let artwork of this.artworklist) {
+      const popupInfo = `
+          ${artwork.name} <br> ${artwork.filename}
+          <br><button class="edit">Edit</button>
+          <br><button class="delete">Delete</button>`;
+
+      L.marker([artwork.latitude, artwork.longitude], this.markerIcon)
+        .addTo(this.map)
+        .bindPopup(popupInfo, popupOptions)
+        .on("popupopen", () => {
+          this.elementRef.nativeElement
+            .querySelector(".edit")
+            .addEventListener("click", e => {
+              _this.editArtwork();
+            });
+        })
+    }
   }
+
+  editArtwork() {
+    alert("editing");
+  }
+
+  refresh(): void {
+    this.artworkService.retrieveAll().then((artworkList) => {
+      this.artworkList = artworkList;
+      console.log(this.artworkList);
+      this.buildMarkers();
+    });
+  }
+
+}
+
+
+
 }
