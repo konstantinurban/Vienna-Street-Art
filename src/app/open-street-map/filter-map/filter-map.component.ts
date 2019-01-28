@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Artwork, ArtworkService } from '../../_services/artwork.service';
+import { OpenStreetMapComponent } from '../open-street-map.component';
+declare let L;
 
 
 @Component({
@@ -8,8 +10,11 @@ import { Artwork, ArtworkService } from '../../_services/artwork.service';
   styleUrls: ['./filter-map.component.css']
 })
 export class FilterMapComponent implements OnInit {
+  @Output() private sendZipcode = new EventEmitter<string>();
+
   artworkList: Artwork[];
   zipcode: string;
+  map;
 
   constructor(private artworkService: ArtworkService) { }
 
@@ -22,4 +27,12 @@ export class FilterMapComponent implements OnInit {
       this.artworkList = artworkList;
     });
   }
+
+  selectedZipcode() {
+        this.sendZipcode.emit(this.zipcode);
+    }
+
+
+
+
 }

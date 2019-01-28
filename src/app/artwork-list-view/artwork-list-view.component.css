@@ -1,11 +1,11 @@
 .map-shadow {
     /* margin-right: 10px; */
-    padding: 5px;
+    /* padding: 5px;
     border-style: solid;
     border-radius: 10px;
     border-color: #ffffff;
     border-width: 10px;
-    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.6);
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.6); */
 }
 
 .map-padding {
@@ -24,12 +24,22 @@
 }
 
 .flex-list {
-    flex-basis: 30%;
-    flex-shrink: 0;
+    /* flex-basis: 30%;
+    flex-shrink: 0; */
 }
 
 
-/* 
+.wrap{
+  display:flex;
+}
+
+.box{
+    height: 100vh;
+    width: 40vw;
+    overflow: scroll;
+}
+
+/*
 .col-25 {
     float: left;
     width: 25%;

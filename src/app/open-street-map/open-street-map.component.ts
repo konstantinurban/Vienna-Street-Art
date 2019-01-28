@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ElementRef } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ElementRef, Input } from '@angular/core';
 
 /*When you include the leaflet script inside the Angular project, it gets
 loaded and exported into a L variable.*/
@@ -6,18 +6,22 @@ declare let L; //this is the leaflet variable!
 
 import { MapButtonsComponent } from './map-buttons/map-buttons';
 import { Artwork, ArtworkService } from '../_services/artwork.service';
+import { FilterMapComponent } from './filter-map/filter-map.component';
+
 
 
 @Component({
   selector: 'app-open-street-map',
   templateUrl: './open-street-map.component.html',
-  styleUrls: ['./open-street-map.component.css']
+  styleUrls: ['./open-street-map.component.css'],
 })
 export class OpenStreetMapComponent implements OnInit {
   @Output() private add = new EventEmitter();
   @Output() private edit = new EventEmitter<number>();
+  @Input() selectedZipcode: string;
   artworkList: Artwork[];
   map;
+  //zipcode;
 
   // markerIcon
   markerIcon = {
@@ -59,36 +63,73 @@ export class OpenStreetMapComponent implements OnInit {
     // add marker
     const marker = L.marker([48.209, 16.373], this.markerIcon).addTo(this.map);
     marker.bindPopup('City Center');
+
+    var searchLayer = new L.LayerGroup();
+    this.map.addLayer(searchLayer);
+
+    var controlSearch = new L.Control.Search({
+      position: 'topleft',
+      layer: searchLayer,
+      initial: false,
+      zoom: 12,
+      marker: false
+    });
+    this.map.addControl(controlSearch);
   }
 
 
-  buildMarkers() {
-    const popupOptions = { className : "customPopup test2" };
-    const _this = this;
-    for (let artwork of this.artworkList) {
-      const popupInfo = `
-          <b> ${artwork.name} </b> <br>
-          ${artwork.firstname} ${artwork.lastname} <br>
-          ${artwork.streetname} ${artwork.streetnumber}, ${artwork.zipcode}
-          <br><i class="fa fa-edit edit popupBtn"></i> <i class="fa fa-trash delete popupBtn"></i>`;
-      L.marker([artwork.latitude, artwork.longitude], this.markerIcon)
-        .addTo(this.map)
-        .bindPopup(popupInfo, popupOptions)
-        .on("popupopen", () => {
-          _this.elementRef.nativeElement
-            .querySelector(".edit")
-            .addEventListener("click", e => {
-              _this.editArtwork();
-            });
-        }).on("popupopen", () => {
-          _this.elementRef.nativeElement
-            .querySelector(".delete")
-            .addEventListener("click", e => {
-              _this.deleteArtwork();
-            });
-        });
+  buildMarkers(artworkList) {
+    for (let artwork of artworkList) {
+      this.buildPopup(artwork);
     }
   }
+
+
+  buildPopup(object) {
+    const popupOptions = { className : "customPopup test2" };
+    const popupInfo = `
+        ${object.name} <br/>
+        ${object.firstname}
+        ${object.lastname} <br/>
+        <img src="${object.imageBase64}" style="max-width:350px; max-height:262px;" alt="base64 test"> <br>
+        ${object.streetname} ${object.streetnumber}
+        , ${object.zipcode}
+      `;
+    L.marker([object.latitude, object.longitude], this.markerIcon)
+      .addTo(this.map)
+      .bindPopup(popupInfo, popupOptions);
+  }
+
+
+
+  // buildMarkers() {
+  //   const popupOptions = { className : "customPopup test2" };
+  //   const _this = this;
+  //   for (let artwork of this.artworkList) {
+  //     const popupInfo = `
+  //         <b> ${artwork.name} </b> <br>
+  //         ${artwork.firstname} ${artwork.lastname} <br>
+  //         <img src="${artwork.imageBase64}" style="max-width:350px; max-height:262px;" alt="base64 test"> <br>
+  //         ${artwork.streetname} ${artwork.streetnumber}, ${artwork.zipcode}
+  //         <br><i class="fa fa-edit edit popupBtn"></i> <i class="fa fa-trash delete popupBtn"></i>`;
+  //     L.marker([artwork.latitude, artwork.longitude], this.markerIcon)
+  //       .addTo(this.map)
+  //       .bindPopup(popupInfo, popupOptions)
+  //       .on("popupopen", () => {
+  //         _this.elementRef.nativeElement
+  //           .querySelector(".edit")
+  //           .addEventListener("click", e => {
+  //             _this.editArtwork();
+  //           });
+  //       }).on("popupopen", () => {
+  //         _this.elementRef.nativeElement
+  //           .querySelector(".delete")
+  //           .addEventListener("click", e => {
+  //             _this.deleteArtwork();
+  //           });
+  //       });
+  //   }
+  // }
 
   editArtwork() {
     this.add.emit();
@@ -103,8 +144,27 @@ export class OpenStreetMapComponent implements OnInit {
     this.artworkService.retrieveAll().then((artworkList) => {
       this.artworkList = artworkList;
       console.log(this.artworkList);
-      this.buildMarkers();
+      this.buildMarkers(this.artworkList);
     });
   }
+
+  filterForZipcode(zipcode) {
+    console.log("filering for:", zipcode);
+    this.map.eachLayer(layer => {
+      if (layer instanceof L.Marker) {
+        this.map.removeLayer(layer);
+      }
+    });
+    if (zipcode === "-All-") {
+      this.buildMarkers(this.artworkList);
+    } else {
+      const currentArtworklist = this.artworkList.filter(
+        list => list.zipcode == zipcode
+      );
+      this.buildMarkers(currentArtworklist);
+    }
+  }
+
+
 
 }
