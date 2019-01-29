@@ -8,12 +8,15 @@
   text-align: center;
   background-color: #fff;
   padding: 3px;
+  width: 34px;
+  height: 34px;
+  transition: .15s;
 }
 
-.fa-filter:hover, .menu, .menuContent  {
-  color: #5690C6;
-  opacity: 1;
+.filterButton:hover  {
+  width: 149px;
 }
+
 
 .fa-filter {
   color: #1770a6;
@@ -21,8 +24,24 @@
   padding-left: 4px;
   padding-right: 4px;
   align-content: center;
+  float:left;
 }
 
-.menu, .menuContent {
-  opacity: 0;
+#filterOptions {
+  /* visibility: hidden; */
+  display: none;
+}
+
+.filterLabel {
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.filterButton:hover #filterOptions {
+  /* visibility: visible; */
+  display: inline;
+}
+
+select {
+  cursor: pointer;
 }

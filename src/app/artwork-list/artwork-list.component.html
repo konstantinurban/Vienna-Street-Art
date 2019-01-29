@@ -12,8 +12,7 @@
     </th>
   </thead>
   <tbody>
-    <tr *ngFor="let artwork of artworkList;">
-      <!-- <td><span class="">{{artwork.id}}</span></td> -->
+    <tr *ngFor="let artwork of artworkList;" class="artworkList" (mouseover)="previewPopup(artwork)">
       <td>{{artwork.name}}</td>
       <td>{{artwork.streetname}}</td>
       <td>{{artwork.zipcode}}</td>

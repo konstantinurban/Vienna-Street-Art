@@ -59,3 +59,9 @@
     color: #aaa;
     cursor: auto;
   }
+
+  .artworkList:hover {
+    cursor: pointer;
+    color: white;
+    background-color: grey;
+  }

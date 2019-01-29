@@ -10,6 +10,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class ArtworkListComponent implements OnInit {
   @Output() private add = new EventEmitter();
   @Output() private edit = new EventEmitter<number>();
+  @Output() private preview = new EventEmitter<number>();
   artworkList: Artwork[];
 
   constructor(
@@ -28,7 +29,6 @@ export class ArtworkListComponent implements OnInit {
   addArtwork() {
     console.log('add artwork');
     this.add.emit();
-
   }
 
   editArtwork(artwork: Artwork) {
@@ -41,6 +41,12 @@ export class ArtworkListComponent implements OnInit {
     this.artworkService.delete(artwork.id).then(
       () => this.refresh()
     );
+  }
+
+  previewPopup(artwork: Artwork) {
+    console.log("hovering mouse");
+    console.log(artwork.id);
+    this.preview.emit(artwork.id);
   }
 
 }

@@ -24,8 +24,7 @@ import { RecommendModalComponent } from './open-street-map/recommend-art/recomme
 
 import { ImageUploadComponent } from './open-street-map/image-upload/image-upload.component';
 import { FilterMapComponent } from './open-street-map/filter-map/filter-map.component';
-// import { ArtworkListViewComponent } from './open-street-map/artwork-list-view/artwork-list-view.component';
-// import { ArtworkListComponent } from './open-street-map/artwork-list/artwork-list.component';
+
 
 import { FiltersPipe } from './open-street-map/filter-map/filters.pipe';
 import { DuplicatesPipe } from './open-street-map/filter-map/duplicates.pipe';
@@ -57,8 +56,7 @@ import { ViewsNavComponent } from './open-street-map/views-nav/views-nav.compone
     ArtworkDashboardComponent,
     ArtworkDashboardViewComponent,
     ViewsNavComponent
-    // ArtworkListViewComponent,
-    // ArtworkListComponent
+
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 <div class="">
   <div class="flex-container">
-    <app-artwork-list class="flex-list map-shadow box" #list (add)="input.startAddingArtwork()" (edit)="input.startEditingArtwork($event)"></app-artwork-list>
+    <app-artwork-list class="flex-list map-shadow box" #list (add)="input.startAddingArtwork()" (edit)="input.startEditingArtwork($event)" (preview)="map.previewArtwork($event)"></app-artwork-list>
     <app-open-street-map class="flex-map map-shadow box" #map></app-open-street-map>
   </div>
 </div>

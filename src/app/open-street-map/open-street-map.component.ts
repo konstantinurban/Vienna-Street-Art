@@ -18,7 +18,7 @@ import { FilterMapComponent } from './filter-map/filter-map.component';
 export class OpenStreetMapComponent implements OnInit {
   @Output() private add = new EventEmitter();
   @Output() private edit = new EventEmitter<number>();
-  @Input() selectedZipcode: string;
+  // @Input() selectedZipcode: string;
   artworkList: Artwork[];
   map;
   //zipcode;
@@ -85,19 +85,33 @@ export class OpenStreetMapComponent implements OnInit {
   }
 
   buildPopup(object) {
+    const _this = this;
     const popupOptions = { className : "customPopup test2" };
     const popupInfo = `
         ${object.name} <br/>
         ${object.firstname}
         ${object.lastname} <br/>
         <img src="${object.imageBase64}" style="max-width:350px; max-height:262px;" alt="base64 test"> <br>
-        ${object.streetname} ${object.streetnumber}
-        , ${object.zipcode}
-      `;
+        ${object.streetname} ${object.streetnumber}, ${object.zipcode}
+        <br><i class="fa fa-edit edit popupBtn"></i> <i class="fa fa-trash delete popupBtn"></i>`;
     L.marker([object.latitude, object.longitude], this.markerIcon)
       .addTo(this.map)
-      .bindPopup(popupInfo, popupOptions);
+      .bindPopup(popupInfo, popupOptions)
+      .on("popupopen", () => {
+      _this.elementRef.nativeElement
+        .querySelector(".edit")
+        .addEventListener("click", e => {
+          _this.editArtwork();
+        });
+    }).on("popupopen", () => {
+      _this.elementRef.nativeElement
+        .querySelector(".delete")
+        .addEventListener("click", e => {
+          _this.deleteArtwork();
+        });
+    });
   }
+
   editArtwork() {
     this.add.emit();
     alert("editing");
@@ -131,5 +145,10 @@ export class OpenStreetMapComponent implements OnInit {
       this.buildMarkers(currentArtworklist);
     }
   }
+
+  previewArtwork(id : number) {
+    console.log("previewing artwork");
+  }
+
 
 }

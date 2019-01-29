@@ -11,7 +11,6 @@ declare let L;
 })
 export class FilterMapComponent implements OnInit {
   @Output() private sendZipcode = new EventEmitter<string>();
-
   artworkList: Artwork[];
   zipcode: string;
   map;
@@ -31,8 +30,4 @@ export class FilterMapComponent implements OnInit {
   selectedZipcode() {
         this.sendZipcode.emit(this.zipcode);
     }
-
-
-
-
 }
