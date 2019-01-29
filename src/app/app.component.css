@@ -23,3 +23,10 @@ nav a:hover {
 nav a.active {
 	color: #039be5;
 }
+
+.route-container {
+    position:relative;
+}
+.route-container>* {
+    display:block;
+}

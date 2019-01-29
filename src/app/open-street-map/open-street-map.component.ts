@@ -13,7 +13,7 @@ import { FilterMapComponent } from './filter-map/filter-map.component';
 @Component({
   selector: 'app-open-street-map',
   templateUrl: './open-street-map.component.html',
-  styleUrls: ['./open-street-map.component.css'],
+  styleUrls: ['./open-street-map.component.css']
 })
 export class OpenStreetMapComponent implements OnInit {
   @Output() private add = new EventEmitter();
@@ -84,7 +84,6 @@ export class OpenStreetMapComponent implements OnInit {
     }
   }
 
-
   buildPopup(object) {
     const popupOptions = { className : "customPopup test2" };
     const popupInfo = `
@@ -99,38 +98,6 @@ export class OpenStreetMapComponent implements OnInit {
       .addTo(this.map)
       .bindPopup(popupInfo, popupOptions);
   }
-
-
-
-  // buildMarkers() {
-  //   const popupOptions = { className : "customPopup test2" };
-  //   const _this = this;
-  //   for (let artwork of this.artworkList) {
-  //     const popupInfo = `
-  //         <b> ${artwork.name} </b> <br>
-  //         ${artwork.firstname} ${artwork.lastname} <br>
-  //         <img src="${artwork.imageBase64}" style="max-width:350px; max-height:262px;" alt="base64 test"> <br>
-  //         ${artwork.streetname} ${artwork.streetnumber}, ${artwork.zipcode}
-  //         <br><i class="fa fa-edit edit popupBtn"></i> <i class="fa fa-trash delete popupBtn"></i>`;
-  //     L.marker([artwork.latitude, artwork.longitude], this.markerIcon)
-  //       .addTo(this.map)
-  //       .bindPopup(popupInfo, popupOptions)
-  //       .on("popupopen", () => {
-  //         _this.elementRef.nativeElement
-  //           .querySelector(".edit")
-  //           .addEventListener("click", e => {
-  //             _this.editArtwork();
-  //           });
-  //       }).on("popupopen", () => {
-  //         _this.elementRef.nativeElement
-  //           .querySelector(".delete")
-  //           .addEventListener("click", e => {
-  //             _this.deleteArtwork();
-  //           });
-  //       });
-  //   }
-  // }
-
   editArtwork() {
     this.add.emit();
     alert("editing");
@@ -164,7 +131,5 @@ export class OpenStreetMapComponent implements OnInit {
       this.buildMarkers(currentArtworklist);
     }
   }
-
-
 
 }

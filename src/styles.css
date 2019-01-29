@@ -21,30 +21,14 @@ body {
   line-height: 1.5;
 }
 
-input[type=text], input[type=number], select, textarea {
+/* select */
+
+input[type=text], input[type=number], textarea {
 	width: 100%;
 	padding: 5px;
 	border: 1px solid #14a014;
 	border-radius: 4px;
 	resize: vertical;
-}
-
-.filterButton {
-  color: #1770a6;
-  font-size: 15px;
-  /* width: 70px; */
-  /* height: 70px; */
-  /* line-height: 30px; */
-  background-color: #fff;
-  text-align: center;
-  cursor: pointer;
-  background-position: 50% 50%;
-  border: 2px solid rgba(0, 0, 0, 0.2);
-  background-clip: padding-box;
-  border-radius: 0;
-  /* padding: 3px; */
-  padding-right: 8px;
-  padding-bottom: 5px;
 }
 
 .popupBtn {
@@ -55,8 +39,4 @@ input[type=text], input[type=number], select, textarea {
 }
 .delete {
   color: red;
-}
-
-.leaflet-control-search .search-button {
-  border-radius: 0px;
 }

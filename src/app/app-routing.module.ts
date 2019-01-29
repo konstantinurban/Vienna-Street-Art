@@ -11,8 +11,8 @@ import { ArtworkListViewComponent } from './artwork-list-view/artwork-list-view.
 const routes: Routes = [
   { path: '', redirectTo: '/homepage', pathMatch: 'full' },
   { path: 'homepage', component: HomepageComponent },
-  { path: 'map', component: OpenStreetMapComponent },
-  { path: 'list', component: ArtworkListViewComponent },
+  { path: 'map', component: OpenStreetMapComponent, data: { depth : 1} },
+  { path: 'list', component: ArtworkListViewComponent, data: { depth : 2} },
   { path: 'dashboard', component: ArtworkDashboardViewComponent }
 ];
 
