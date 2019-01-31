@@ -16,7 +16,7 @@ import { FilterMapComponent } from './filter-map/filter-map.component';
   styleUrls: ['./open-street-map.component.css']
 })
 export class OpenStreetMapComponent implements OnInit {
-  @Output() private add = new EventEmitter();
+  @Output() private delete = new EventEmitter();
   @Output() private edit = new EventEmitter<number>();
   artworkList: Artwork[];
   map;
@@ -85,24 +85,27 @@ export class OpenStreetMapComponent implements OnInit {
         _this.elementRef.nativeElement
           .querySelector(".edit")
           .addEventListener("click", e => {
-            _this.editArtwork();
+            _this.editArtwork(object);
           });
       }).on("popupopen", () => {
         _this.elementRef.nativeElement
           .querySelector(".delete")
           .addEventListener("click", e => {
-            _this.deleteArtwork();
+            _this.deleteArtwork(object);
           });
       });
   }
 
-  editArtwork() {
-    this.add.emit();
+  editArtwork(artwork) {
     alert("editing");
+    this.edit.emit(artwork.id);
   }
 
-  deleteArtwork() {
-    alert("deleting");
+  deleteArtwork(artwork) {
+    alert("deleting", artwork);
+    this.delete.emit(artwork).then(
+      () => this.refresh();
+    );
   }
 
   refresh() {
