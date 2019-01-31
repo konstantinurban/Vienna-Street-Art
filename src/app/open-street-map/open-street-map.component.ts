@@ -18,10 +18,8 @@ import { FilterMapComponent } from './filter-map/filter-map.component';
 export class OpenStreetMapComponent implements OnInit {
   @Output() private add = new EventEmitter();
   @Output() private edit = new EventEmitter<number>();
-  // @Input() selectedZipcode: string;
   artworkList: Artwork[];
   map;
-  //zipcode;
 
   // markerIcon
   markerIcon = {
@@ -51,7 +49,7 @@ export class OpenStreetMapComponent implements OnInit {
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
       maxZoom: 18,
-      minZoom: 13,
+      // minZoom: 13,
       id: 'mapbox.streets',
       accessToken: 'pk.eyJ1IjoicHcxN2wwMDgiLCJhIjoiY2pua2c2OWxuMGVkOTNxbWh5MWNqajEwdyJ9.X_SuGwNGs12TwCsrsUvBxw'
     }).addTo(this.map);
@@ -60,56 +58,42 @@ export class OpenStreetMapComponent implements OnInit {
     MapButtonsComponent.renderCompass(this.map);
     MapButtonsComponent.renderLocation(this.map);
 
-    // add marker
-    const marker = L.marker([48.209, 16.373], this.markerIcon).addTo(this.map);
-    marker.bindPopup('City Center');
-
-    var searchLayer = new L.LayerGroup();
-    this.map.addLayer(searchLayer);
-
-    var controlSearch = new L.Control.Search({
-      position: 'topleft',
-      layer: searchLayer,
-      initial: false,
-      zoom: 12,
-      marker: false
-    });
-    this.map.addControl(controlSearch);
-  }
-
+  const marker = L.marker([48.209, 16.373], this.markerIcon).addTo(this.map);
+  marker.bindPopup('City Center');
+}
 
   buildMarkers(artworkList) {
-    for (let artwork of artworkList) {
-      this.buildPopup(artwork);
+   for (let artwork of artworkList) {
+    const marker = this.buildPopup(artwork);
     }
   }
 
   buildPopup(object) {
     const _this = this;
-    const popupOptions = { className : "customPopup test2" };
+    const popupOptions = { className: "customPopup test2" };
     const popupInfo = `
-        ${object.name} <br/>
-        ${object.firstname}
+         <b> Title:</b>${object.name}<br/>
+        <b>Artist name: </b> ${object.firstname}
         ${object.lastname} <br/>
-        <img src="${object.imageBase64}" style="max-width:350px; max-height:262px;" alt="base64 test"> <br>
-        ${object.streetname} ${object.streetnumber}, ${object.zipcode}
+        <img src="${object.imageBase64}" alt="base64"> <br>
+        <b>Address:</b> ${object.streetname} ${object.streetnumber}, ${object.zipcode}
         <br><i class="fa fa-edit edit popupBtn"></i> <i class="fa fa-trash delete popupBtn"></i>`;
     L.marker([object.latitude, object.longitude], this.markerIcon)
       .addTo(this.map)
       .bindPopup(popupInfo, popupOptions)
       .on("popupopen", () => {
-      _this.elementRef.nativeElement
-        .querySelector(".edit")
-        .addEventListener("click", e => {
-          _this.editArtwork();
-        });
-    }).on("popupopen", () => {
-      _this.elementRef.nativeElement
-        .querySelector(".delete")
-        .addEventListener("click", e => {
-          _this.deleteArtwork();
-        });
-    });
+        _this.elementRef.nativeElement
+          .querySelector(".edit")
+          .addEventListener("click", e => {
+            _this.editArtwork();
+          });
+      }).on("popupopen", () => {
+        _this.elementRef.nativeElement
+          .querySelector(".delete")
+          .addEventListener("click", e => {
+            _this.deleteArtwork();
+          });
+      });
   }
 
   editArtwork() {
@@ -146,9 +130,27 @@ export class OpenStreetMapComponent implements OnInit {
     }
   }
 
-  previewArtwork(id : number) {
-    console.log("previewing artwork");
+  previewArtwork(artwork) {
+    const popupOptions = { className: "customPopup test2" };
+    const popupInfo = `
+         <b> Title:</b>${artwork.name}<br/>
+        <b>Artist name: </b> ${artwork.firstname}
+        ${artwork.lastname} <br/>
+        <img src="${artwork.imageBase64}" alt="base64"> <br>
+        <b>Address:</b> ${artwork.streetname} ${artwork.streetnumber}, ${artwork.zipcode}`;
+    this.map.eachLayer(layer => {
+      if (layer instanceof L.Marker) {
+        this.map.removeLayer(layer);
+      }
+    });
+    let previewedMarker = L.marker([artwork.latitude, artwork.longitude], this.markerIcon)
+      .addTo(this.map);
+      previewedMarker.bindPopup(popupInfo, popupOptions).openPopup();
+    }
+
+  fullView() {
+    console.log("mouse out")
+    this.refresh();
+    // this.buildMarkers(this.artworkList);
   }
-
-
 }

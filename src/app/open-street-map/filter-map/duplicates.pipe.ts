@@ -8,7 +8,6 @@ import { Artwork, ArtworkService } from '../../_services/artwork.service';
 export class DuplicatesPipe implements PipeTransform {
 
   transform(artwork: Artwork[], args?: any): any {
-    console.log("artwork", artwork);
     const map = artwork.map(c => c.zipcode);
     console.log("artwork map", map );
     console.log("artwork filter", map.filter((code, currentIndex, allCodes) => allCodes.indexOf(code) === currentIndex));

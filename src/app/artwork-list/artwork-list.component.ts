@@ -10,12 +10,13 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class ArtworkListComponent implements OnInit {
   @Output() private add = new EventEmitter();
   @Output() private edit = new EventEmitter<number>();
-  @Output() private preview = new EventEmitter<number>();
+  @Output() private preview = new EventEmitter();
+  @Output() private normal = new EventEmitter();
   artworkList: Artwork[];
 
   constructor(
     private artworkService: ArtworkService,
-) { }
+  ) { }
 
   ngOnInit() {
     this.refresh();
@@ -32,21 +33,26 @@ export class ArtworkListComponent implements OnInit {
   }
 
   editArtwork(artwork: Artwork) {
-    console.log('edit artwork ' + artwork.name + ' ' + artwork.id );
+    console.log('edit artwork ' + artwork.name + ' ' + artwork.id);
     this.edit.emit(artwork.id);
   }
 
   deleteArtwork(artwork: Artwork) {
-    console.log('delete artwork ' + artwork.name + ' ' + artwork.id );
-    this.artworkService.delete(artwork.id).then(
-      () => this.refresh()
-    );
+    if (confirm("Are you sure you want to delete the Artwork?")) {
+      console.log('delete artwork ' + artwork.name + ' ' + artwork.id);
+      this.artworkService.delete(artwork.id).then(
+        () => this.refresh()
+      );
+    }
   }
 
-  previewPopup(artwork: Artwork) {
-    console.log("hovering mouse");
-    console.log(artwork.id);
-    this.preview.emit(artwork.id);
+  previewPopup(artwork) {
+    this.preview.emit(artwork);
+  }
+
+  allMarkers() {
+    console.log("out 1");
+    this.normal.emit();
   }
 
 }
