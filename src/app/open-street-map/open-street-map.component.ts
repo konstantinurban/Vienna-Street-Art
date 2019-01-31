@@ -151,6 +151,5 @@ export class OpenStreetMapComponent implements OnInit {
   fullView() {
     console.log("mouse out")
     this.refresh();
-    // this.buildMarkers(this.artworkList);
   }
 }
