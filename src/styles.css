@@ -36,9 +36,11 @@ input[type=text], input[type=number], textarea {
 }
 .edit {
   color: green;
+  float: left;  
 }
 .delete {
   color: red;
+  float: right;
 }
 
 .leaflet-control-search .search-input {

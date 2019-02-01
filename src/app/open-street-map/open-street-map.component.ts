@@ -75,9 +75,9 @@ export class OpenStreetMapComponent implements OnInit {
          <b> Title:</b>${object.name}<br/>
         <b>Artist name: </b> ${object.firstname}
         ${object.lastname} <br/>
-        <img src="${object.imageBase64}" alt="base64"> <br>
+        <img src="${object.imageBase64}" class="img-thumbnail popupPics" alt="base64" style="border: solid 5px black"> <br>
         <b>Address:</b> ${object.streetname} ${object.streetnumber}, ${object.zipcode}
-        <br><i class="fa fa-edit edit popupBtn"></i> <i class="fa fa-trash delete popupBtn"></i>`;
+        <br><i class="fa fa-edit edit popupBtn"></i> <i class="fa fa-trash delete popupBtn"></i><br>`;
     L.marker([object.latitude, object.longitude], this.markerIcon)
       .addTo(this.map)
       .bindPopup(popupInfo, popupOptions)
@@ -102,10 +102,8 @@ export class OpenStreetMapComponent implements OnInit {
   }
 
   deleteArtwork(artwork) {
-    alert("deleting", artwork);
-    this.delete.emit(artwork).then(
-      () => this.refresh();
-    );
+    this.delete.emit(artwork);
+    this.refresh();
   }
 
   refresh() {
@@ -139,7 +137,7 @@ export class OpenStreetMapComponent implements OnInit {
          <b> Title:</b>${artwork.name}<br/>
         <b>Artist name: </b> ${artwork.firstname}
         ${artwork.lastname} <br/>
-        <img src="${artwork.imageBase64}" alt="base64"> <br>
+        <img src="${artwork.imageBase64}" class="img-thumbnail" alt="base64" style="border: solid 5px black" alt="base64"> <br>
         <b>Address:</b> ${artwork.streetname} ${artwork.streetnumber}, ${artwork.zipcode}`;
     this.map.eachLayer(layer => {
       if (layer instanceof L.Marker) {
